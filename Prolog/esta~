@@ -1,0 +1,56 @@
+:-dynamic cierto/1.
+:-dynamic falso/1.
+
+junior(P):-es(P, solo_parte_humana).
+junior(P):-es(P, solo_parte_animal).
+junior(P):-es(P, [parte_animal,parte_humana]).
+
+sostiene(P):-es(P, bipeda).
+sostiene(P):-es(P, cuadrupeda).
+
+tamanio(P):-es(P, pequenia).
+tamanio(P):-es(P, mediana).
+tamanio(P):-es(P, grande).
+
+apariencia(P):-es(P, grotesca).
+apariencia(P):-es(P, hermosa).
+apariencia(P):-es(P, feroz).
+
+lifestyle(P):-es(P, social).
+lifestyle(P):-es(P, solitaria).
+
+alimentacion(P):-es(P, carnivora).
+alimentacion(P):-es(P, hervibora).
+alimentacion(P):-es(P, omnivora).
+
+habitat(P):-es(P, del_mar).
+habitat(P):-es(P, del_bosque).
+
+
+criatura(P, ciclope):-assert(junior(P)),sostiene(P),tamanio(P),apariencia(P),alimentacion(P),puede(P, comer_humanos).
+
+criatura(P, duende):-assert(junior(P)),sostiene(P),tamanio(P),apariencia(P),alimentacion(P),habitat(P),lifestyle(P),puede(P, hacer_travesuras).
+criatura(P, hada):-assert(junior(P)),sostiene(P),tamanio(P),apariencia(P),alimentacion(P),habitat(P),lifestyle(P),puede(P, volar).
+
+
+
+visualiza_pregunta(A):-write(A), write('(si/no)? ').
+pregunta(A,Resp):-visualiza_pregunta(A), read(Resp).
+
+responde(si, A):-!,assertz(cierto(A)).
+responde(no, A):-!,assertz(falso(A)), fail.
+
+preguntable(es(_,_)).
+preguntable(puede(_,_)).
+
+resuelve(true):-!.
+resuelve((A,B)):-!,resuelve(A), resuelve(B).
+resuelve(A):-falso(A), !, fail.
+resuelve(A):-cierto(A),!.
+resuelve(A):-clause(A,B),resuelve(B).
+resuelve(A):-preguntable(A),pregunta(A,Resp),responde(Resp,A).
+
+borrar :- retract(cierto(_)),fail.
+borrar :- retract(falso(_)),fail.
+borrar. 
+

@@ -1,0 +1,9 @@
+%Explique el por qué  de la salida de la consulta realizada al siguiente programa (25%):
+a:-b,!, p.
+a:-r.
+b:-q.
+b:-e.
+p.
+q.
+r.
+e.

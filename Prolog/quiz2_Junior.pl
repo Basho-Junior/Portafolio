@@ -1,0 +1,131 @@
+% En esta base de conocimiento se detalla informacion de algunos
+% balnearios del pais. Con esta informacion, una persona desea obtener
+% informacion para tomar decisiones con respecto a unas minivacaciones
+% que desea tomar en lugares en donde haya algun sitio para banarse.
+
+% Hecho que especifica el nombre del balneario y su tipo
+balneario(balneario1,rio).
+balneario(balneario2,piscina).
+balneario(balneario3,playa).
+balneario(balneario4,piscina).
+balneario(balneario5,rio).
+
+
+% Hecho que indica el lugar donde se localiza el balneario
+lugar(balneario1,la_vega).
+lugar(balneario2,gran_almirante).
+lugar(balneario3,puerto_plata).
+lugar(balneario4,riu_bachata).
+lugar(balneario5,barahona).
+
+
+% Hecho que dice la region del pais donde se localiza cada lugar
+zona(la_vega,norte).
+zona(gran_almirante,norte).
+zona(puerto_plata,norte).
+zona(riu_bachata,norte).
+zona(barahona,sur).
+
+% Para los lugares que son hoteles, este hecho indica la modalidad de
+% operacion de los mismos
+hotel(gran_almirante,no_todo_incluido).
+hotel(riu_bachata,todo_incluido).
+
+% Costo por noche de los distintos tipos de habitaciones de los hoteles
+
+costo_noche(gran_almirante,habitacion_sencilla,5500).
+costo_noche(gran_almirante,habitacion_doble,7500).
+costo_noche(gran_almirante,suite,11200).
+costo_noche(riu_bachata,habitacion_estandar, 4500).
+costo_noche(riu_bachata,habitacion_vista_jardin, 5500).
+costo_noche(riu_bachata,habitacion_vista_mar,7000).
+
+% Algunos costos adicionales de los lugares
+costos_adicionales(la_vega, plato_del_dia, 125).
+costos_adicionales(puerto_plata, plato_del_dia, 250).
+costos_adicionales(barahona, plato_del_dia, 80).
+costos_adicionales(gran_almirante, desayuno, 1500).
+costos_adicionales(gran_almirante, plato_del_dia, 2000).
+costos_adicionales(gran_almirante, cena_buffet, 2500).
+
+
+% Basado en estos hechos, desarrolle las siguientes reglas que se le
+% piden
+
+
+% 1. Regla balnearios_incluido_norte(?Balneario, ?Tipo) que le devuelva
+% los balnearios del norte del pais, con su tipo, que operen bajo la
+% modalidad de todo incluido
+
+balnearios_incluido_norte(Balneario, Tipo):- balneario(Balneario,Tipo),lugar(Balneario,Lugar), zona(Lugar,norte), hotel(Lugar,todo_incluido).
+
+
+% 2. Regla rio_puedo_pasar_dia(+Monto,?Rio,?Lugar) que le devuelva los
+% rios y su lugar de ubicacion, en donde el gasto a realizar por en un
+% dia sea menor o igual a un monto tope establecido
+
+%Para probar esta regla.
+
+rio_puedo_pasar_dia(Monto,Rio,Lugar):-balneario(Rio,rio),lugar(Rio,Lugar),costos_adicionales(Lugar,_,PrecioAdicional),PrecioAdicional =< Monto.
+
+% 3. Regla balneario_puedo_pasar_dias(+dias, +Monto,?Balneario,?Tipo,
+% ?Lugar) que le devuelva los balnearios, su tipo y su lugar de
+% ubicacion, en donde el gasto a realizar por una cantidad dada de dias
+% sea menor o igual a un monto tope establecido
+%
+balneario_puedo_pasar_dias(Dias,Monto,Balneario,Tipo,Lugar):-balneario(Balneario,Tipo),lugar(Balneario,Lugar),costos_adicionales(Lugar,_,PrecioAdicional),PrecioTotal is PrecioAdicional * Dias,PrecioTotal =< Monto,Dias == 1.
+
+balneario_puedo_pasar_dias(Dias,Monto,Balneario,Tipo,Lugar):- balneario(Balneario,Tipo),lugar(Balneario,Lugar),hotel(Lugar,no_todo_incluido),costo_noche(Lugar,_,PrecioHabitacion),costos_adicionales(Lugar,desayuno,PrecioAdicionalD),costos_adicionales(Lugar,plato_del_dia,PrecioAdicionalP),costos_adicionales(Lugar,cena_buffet,PrecioAdicionalC),PrecioTotal is (PrecioHabitacion+PrecioAdicionalD+PrecioAdicionalP+PrecioAdicionalC) * Dias, PrecioTotal =< Monto, Dias > 1.
+
+balneario_puedo_pasar_dias(Dias,Monto,Balneario,Tipo,Lugar):- balneario(Balneario,Tipo),lugar(Balneario,Lugar),hotel(Lugar,todo_incluido),costo_noche(Lugar,_,PrecioHabitacion),PrecioTotal is PrecioHabitacion * Dias, PrecioTotal =< Monto, Dias > 1.
+
+
+
+% 4. Regla mejor_lugar_minivacaciones(+Lugar1,+Lugar2,?Mejor_lugar) que
+% dados dos lugares que se le espefiquen devuelva el mejor lugar,
+% basado en cual es mas barato pasar el dia.
+
+mejor_lugar_minivacaciones(Lugar1,Lugar2,Mejor_lugar):- lugar(_,Lugar1),lugar(_,Lugar2),costos_adicionales(Lugar1,plato_del_dia,PrecioPlato1),costos_adicionales(Lugar2,plato_del_dia,PrecioPlato2), PrecioPlato1 < PrecioPlato2, Mejor_lugar = Lugar1, not(hotel(Lugar1,todo_incluido)).
+
+mejor_lugar_minivacaciones(Lugar1,Lugar2,Mejor_lugar):- lugar(_,Lugar1),lugar(_,Lugar2),costos_adicionales(Lugar1,plato_del_dia,PrecioPlato1),costos_adicionales(Lugar2,plato_del_dia,PrecioPlato2), PrecioPlato1 < PrecioPlato2, Mejor_lugar = Lugar1, not(hotel(Lugar2,todo_incluido)).
+
+mejor_lugar_minivacaciones(Lugar1,Lugar2,Mejor_lugar):- lugar(_,Lugar1),lugar(_,Lugar2),costos_adicionales(Lugar1,plato_del_dia,PrecioPlato1),costos_adicionales(Lugar2,plato_del_dia,PrecioPlato2), PrecioPlato1 > PrecioPlato2, Mejor_lugar = Lugar2, not(hotel(Lugar2,todo_incluido)).
+
+
+mejor_lugar_minivacaciones(Lugar1,Lugar2,Mejor_lugar):- lugar(_,Lugar1),lugar(_,Lugar2),costos_adicionales(Lugar1,plato_del_dia,PrecioPlato1),costos_adicionales(Lugar2,plato_del_dia,PrecioPlato2), PrecioPlato1 > PrecioPlato2, Mejor_lugar = Lugar2, not(hotel(Lugar1,todo_incluido)).
+
+
+mejor_lugar_minivacaciones(Lugar1,Lugar2,Mejor_lugar):- lugar(_,Lugar1),lugar(_,Lugar2),hotel(Lugar1,no_todo_incluido),costos_adicionales(Lugar1,_,PrecioPlato1),hotel(Lugar2,no_todo_incluido),costos_adicionales(Lugar2,_,PrecioPlato2), PrecioPlato1 < PrecioPlato2, Mejor_lugar is Lugar1.
+
+mejor_lugar_minivacaciones(Lugar1,Lugar2,Mejor_lugar):- lugar(_,Lugar1),lugar(_,Lugar2),hotel(Lugar1,no_todo_incluido),costos_adicionales(Lugar1,_,PrecioPlato1),hotel(Lugar2,no_todo_incluido),costos_adicionales(Lugar2,_,PrecioPlato2), PrecioPlato1 > PrecioPlato2, Mejor_lugar = Lugar2.
+
+mejor_lugar_minivacaciones(Lugar1,Lugar2,Mejor_lugar):- lugar(_,Lugar1),lugar(_,Lugar2),hotel(Lugar1,no_todo_incluido),costos_adicionales(Lugar1,_,PrecioPlato1),costos_adicionales(Lugar2,_,PrecioPlato2), PrecioPlato1 < PrecioPlato2, Mejor_lugar = Lugar1.
+
+mejor_lugar_minivacaciones(Lugar1,Lugar2,Mejor_lugar):- lugar(_,Lugar1),lugar(_,Lugar2),hotel(Lugar1,no_todo_incluido),hotel(Lugar2,no_todo_incluido),costos_adicionales(Lugar1,_,PrecioPlato1),costos_adicionales(Lugar2,_,PrecioPlato2), PrecioPlato1 < PrecioPlato2, Mejor_lugar = Lugar1.
+
+mejor_lugar_minivacaciones(Lugar1,Lugar2,Mejor_lugar):- lugar(_,Lugar1),lugar(_,Lugar2),hotel(Lugar2,no_todo_incluido),costos_adicionales(Lugar1,_,PrecioPlato1),costos_adicionales(Lugar2,_,PrecioPlato2), PrecioPlato1 > PrecioPlato2, Mejor_lugar = Lugar2.
+
+mejor_lugar_minivacaciones(Lugar1,Lugar2,Mejor_lugar):- lugar(_,Lugar1),lugar(_,Lugar2),hotel(Lugar1,no_todo_incluido),hotel(Lugar2,no_todo_incluido),costos_adicionales(Lugar1,_,PrecioPlato1),costos_adicionales(Lugar2,_,PrecioPlato2), PrecioPlato1 > PrecioPlato2, Mejor_lugar = Lugar2.
+
+mejor_lugar_minivacaciones(Lugar1,Lugar2,Mejor_lugar):- lugar(_,Lugar1),lugar(_,Lugar2),hotel(Lugar1,todo_incluido),costo_noche(Lugar1,habitacion_sencilla,PrecioHabitacion),costos_adicionales(Lugar1,_,PrecioPlato1),costos_adicionales(Lugar2,_,PrecioTotal2),PrecioTotal1 is PrecioHabitacion + PrecioPlato1, PrecioTotal1 < PrecioTotal2, Mejor_lugar = Lugar1.
+
+mejor_lugar_minivacaciones(Lugar1,Lugar2,Mejor_lugar):- lugar(_,Lugar1),lugar(_,Lugar2),hotel(Lugar2,todo_incluido),costo_noche(Lugar2,habitacion_sencilla,PrecioHabitacion),costos_adicionales(Lugar2,_,PrecioPlato1),costos_adicionales(Lugar1,_,PrecioTotal2),PrecioTotal1 is PrecioHabitacion + PrecioPlato1, PrecioTotal1 > PrecioTotal2, Mejor_lugar = Lugar2.
+
+
+
+
+
+% 5. Regla dime_costos_premium/0 en donde se le permita al usuario
+% indicar una region y le imprima los costos de los distintos tipos de
+% habitaciones que encuentre en dicha region para los hoteles que no son
+% todo incluido. Es probable que para hacer funcionar esta regla
+% correctamente necesite investigar sobre un predicado predefinido
+% llamado fail.
+
+
+
+
+
+
+
+

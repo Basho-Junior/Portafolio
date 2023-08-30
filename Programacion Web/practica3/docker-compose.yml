@@ -1,0 +1,105 @@
+version: "3.9"
+services:
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+#    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: $DB_PASS
+      MYSQL_DATABASE: $DB_DATABASE
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+    volumes:
+      - db_data:/var/lib/mysql
+  redis:
+    image: redis:6.2.6-alpine
+    healthcheck:
+      test: ["CMD", "redis-cli","ping"]
+      timeout: 20s
+      retries: 10
+  app_1:
+    image: znzn00/mock-api:balanceador
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    environment:
+      APP_DB_URL: jdbc:mysql://db:$DB_DOCKER_PORT/$DB_DATABASE?useSSL=false
+      APP_DB_DRIVER_CLASSNAME: com.mysql.jdbc.Driver
+      APP_DB_PLATFORM: "org.hibernate.dialect.MySQL5InnoDBDialect"
+      APP_DB_USERNAME: $DB_USER
+      APP_DB_PASSWORD: $DB_PASS
+      APPLICATION_PORT: $HOST_APP_A_PORT
+      REDIS_HOST: redis
+      REDIS_PORT: $REDIS_PORT
+    healthcheck:
+      test: "curl --fail --silent localhost:$$APPLICATION_PORT/actuator/health | grep UP || exit 1"
+      interval: 20s
+      timeout: 5s
+      retries: 5
+  app_2:
+    image: znzn00/mock-api:balanceador
+    depends_on:
+      app_1:
+        condition: service_healthy
+    environment:
+      APP_DB_URL: jdbc:mysql://db:$DB_DOCKER_PORT/$DB_DATABASE?useSSL=false
+      APP_DB_DRIVER_CLASSNAME: com.mysql.jdbc.Driver
+      APP_DB_PLATFORM: "org.hibernate.dialect.MySQL5InnoDBDialect"
+      APP_DB_USERNAME: $DB_USER
+      APP_DB_PASSWORD: $DB_PASS
+      APPLICATION_PORT: $HOST_APP_B_PORT
+      REDIS_HOST: redis
+      REDIS_PORT: $REDIS_PORT
+    healthcheck:
+      test: "curl --fail --silent localhost:$$APPLICATION_PORT/actuator/health | grep UP || exit 1"
+      interval: 20s
+      timeout: 5s
+      retries: 5
+  app_3:
+    image: znzn00/mock-api:balanceador
+    depends_on:
+      app_2:
+        condition: service_healthy
+    environment:
+      APP_DB_URL: jdbc:mysql://db:$DB_DOCKER_PORT/$DB_DATABASE?useSSL=false
+      APP_DB_DRIVER_CLASSNAME: com.mysql.jdbc.Driver
+      APP_DB_PLATFORM: "org.hibernate.dialect.MySQL5InnoDBDialect"
+      APP_DB_USERNAME: $DB_USER
+      APP_DB_PASSWORD: $DB_PASS
+      APPLICATION_PORT: $HOST_APP_C_PORT
+      REDIS_HOST: redis
+      REDIS_PORT: $REDIS_PORT
+    healthcheck:
+      test: "curl --fail --silent localhost:$$APPLICATION_PORT/actuator/health | grep UP || exit 1"
+      interval: 20s
+      timeout: 5s
+      retries: 5
+  haproxy:
+    build: ./haproxy/
+    depends_on:
+      app_3:
+        condition: service_healthy
+    environment:
+      APP_A: app_1:$HOST_APP_A_PORT
+      APP_B: app_2:$HOST_APP_B_PORT
+      APP_C: app_3:$HOST_APP_C_PORT
+    ports:
+      - 80:80
+      - 443:443
+
+  # phpmyadmin:
+  #   image: phpmyadmin
+  #   restart: always
+  #   ports:
+  #     - $HOST_DB_WEB_CLIENT_PORT:80
+  #   environment:
+  #     PMA_HOST: db
+  #     PMA_PORT: $DB_DOCKER_PORT
+  #     PMA_ARBITRARY: 1
+
+volumes:
+  db_data:

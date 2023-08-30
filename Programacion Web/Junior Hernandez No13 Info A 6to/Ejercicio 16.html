@@ -1,0 +1,191 @@
+<html>
+        <head>
+                <title>Ejercicio 16</title>
+            <style>
+                body{
+                    background-color: rgb(126, 161, 201)
+                }
+                #Precio{
+                    width: 70px;
+                    height: 25px;
+                }
+                #ti{
+                    margin-right: -13px;
+                }
+                #tr{
+                    margin-right: 120px;
+                }
+                #te{
+                    margin-right: 221px;
+                }
+                #fe{
+                    margin-right: 250px;
+                }
+                #pe{
+                    margin-right: 32px; 
+                }
+                #feo{
+                    margin-right: 10px;
+                }
+                #feooo{
+                    margin-right: 10px;
+                }
+                #feoooo{
+                    margin-right: 10px;
+                }
+                #feooooo{
+                    margin-right: 10px;
+                }
+                #peo{
+                    margin-right: 230px;
+                }
+                #feoo{
+                    margin-right: 110px;
+                }
+                #pri{
+                    margin-right: 230px;
+                }
+                #seg{
+                    margin-right: 160px;
+                }
+                #ter{
+                    margin-right: 194px;
+                }
+                #Nombre{
+                    height: 30px;
+                }
+                #primer{
+                    position:absolute;
+                    left:510px;
+                    top:95px;
+                    background-color: rgb(126, 161, 201)
+                }
+                #segundo{
+                    position:absolute;
+                    left:510px;
+                    bottom:140px;
+                    background-color: rgb(126, 161, 201)
+                }
+                #uj{
+                    margin-left: 20px;
+                }
+                .Formulario{
+                    padding-top: 20px;
+                    border: 1px solid rgb(0, 0, 0);
+                    width: 400px;
+   
+                }
+                #Boton:hover{
+                    background-color: rgb(148, 181, 218);
+                }
+                .input{
+                background-color: rgb(255, 255, 255);
+                padding: .5rem;
+                margin: .5rem 0;
+                border: none;
+                border-bottom: solid #C8C8C8 .2rem;
+                transition: all .5s;
+                }
+                .nav li a {
+                background-color: rgb(112, 143, 179);
+                color:#fff;
+                text-decoration:none;
+                padding:10px 5px;
+                display:block;  
+                
+            }
+            ul, ol {
+        list-style:none;
+        }
+            .nav > li {
+        float:left;
+        }
+        .nav{
+            margin-top: 5px;
+            margin-left:412px;
+        }
+            .nav li ul li {
+                position:relative;
+            }
+                .nav li a:hover {
+                background-color:rgb(70, 121, 216); 
+                }
+            </style>
+        <body>
+            <center>
+            <ul class="nav">
+                <li><a href="">Archivo</a></li>
+                <li><a href="">Editar</a></li>
+                <li><a href="">Ver</a></li>
+                <li><a href="">Marcadores</a></li>
+                <li><a href="">Widgets</a></li>
+                <li><a href="">Herramientas</a></li>
+                <li><a href="">Ayuda</a></li>
+            </ul>
+            <br>
+            <br>
+            <h1 id = "ti">Informacion sobre el producto</h1>
+            <h2 id = "primer">Datos básicos</h2>
+            <div class = "Formulario">
+            <span id = "fe">
+            Nombre</span>
+            <br>
+            <span id = "tr">
+            <input type="text" id ="Nombre" class = "input"/>
+            </span>
+            <br>
+            <br>
+            <span id = "te">Descripcion</span>
+            <br>
+            <textarea id="Descripcion" name="Descripcion" cols="40" rows="5"></textarea>
+            <br>
+            <br>
+            <span id = "feo">
+            Foto 
+            <input type="file" name="adjunto"/></span>
+            <br>
+            <br>
+            <span id = "feoo" ><input name="puesto_directivo" type="checkbox" value="direccion"/> Añadir contador de visitas</span>
+            <br>
+            <br>
+        </div>
+<br>
+<br>
+<h2 id = "segundo">Datos económicos</h2>
+<div class = "Formulario">
+    <div id = "pe">
+        Precio
+        <input type="text" id ="Precio" class = "input"/>
+        €
+    <span id = "uj">Impuestos
+        <select>
+                <option value="0.04">4%</option>
+                <option value="0.07">7%</option>
+                <option value="0.16">16%</option>
+                <option value="0.25">25%</option>
+        </select>
+    </span>
+    </div>
+        <br>
+        <span id = "peo">
+        Promocion
+        </span>
+        <br>
+        <span id = "pri">
+        <input type="radio" name="Promo" value="" checked="checked" /> Ninguno
+        </span>
+        <br>
+        <span id = "seg">
+        <input type="radio" name="Promo" value="transporte gratuito" /> Transporte Gratuito
+        </span>
+        <br>
+        <span id = "ter">
+        <input type="radio" name="Promo" value="descuente" /> Descuento 5%
+        </span>
+        <br>
+        <br>
+</div>
+</center>
+        </body>    
+        </head>
+</html>

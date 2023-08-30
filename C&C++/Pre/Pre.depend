@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1637627323 source:c:\users\junior\desktop\proyectosc\pre\main.cpp
+	<iostream>
+	<cstdlib>
+	<ctime>
+	<mpi.h>
+

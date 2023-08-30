@@ -1,0 +1,49 @@
+:-dynamic cierto/1.
+:-dynamic falso/1.
+
+
+criatura(P, ciclope):-tiene(P, parte_humana),es(P, grande), es(P, fuerte),es(P, carnivora),es(bipeda),puede(P, comer_humanos), es(P, una_guerrera), es(P, maliciosa), es(P, grotesca), es(P, testaruda).
+
+criatura(P, duende):-tiene(P, parte_humana),habita(P, bosques),puede(P, hacer_travesuras),es(P, pequenia),es(P, grotesca),es(P, social),es(P, bipeda), es(P, omnivora), es(P, maliciosa), es(P, astuta).
+
+criatura(P, hada):-tiene(P, parte_humana),habita(P, bosques),es(P, social),puede(P, volar), es(P, magica), puede(P, cantar), es(P, pequenia), es(P, bipeda), es(P, hermosa), es(P, hervibora), es(P, pacifica).
+
+criatura(P, pegaso):-tiene(P, parte_animal),es(P, cuadrupeda),puede(P, volar),es(P, hervibora),tiene(P, pezunias),es(P, hermosa),tiene(P, cola),es(P, mediana),es(P, leal).
+
+criatura(P, grifo):-tiene(P, parte_animal),es(P, cuadrupeda),tiene(P, cola),puede(P, volar),tiene(P, pico), es(P, feroz), es(P, leal),es(P, mediana).
+
+criatura(P, gorgona):-tiene(P, parte_humana),tiene(P, parte_animal),tiene(P, escamas), es(P, omnivoro),es(P, mediana),es(P, bipeda),es(P, magica),es(P, maliciosa),es(P, venenosa).
+
+criatura(P, centauro):-tiene(P, parte_humana),tiene(P, parte_animal),tiene(P, cola),es(P, una_guerrera),es(P, omnivora),es(P, mediana),es(P, cuadrupeda), es(P, social), tiene(P, pezunias).
+
+criatura(P, fauno):-tiene(P, parte_humana),tiene(P,parte_humana), tiene(P, cola), habita(P, bosques), es(P, mediana), es(P, omnivora),tiene(P, cuernos), es(P, bipeda), es(P, sabia), tiene(P, pezunias), es(P, pacifica).
+
+criatura(P, minotauro):-tiene(P, parte_humana),tiene(P,parte_humana),es(P, una_guerrera),es(P, grotesca), tiene(P, cuernos),es(P, omnivora), es(P, mediana), tiene(P, cola), es(P, fuerte), es(P, bipeda), tiene(P, pezunias), puede(P, comer_humanos).
+
+criatura(P, sirena):-tiene(P, parte_humana),tiene(P,parte_animal),tiene(P, cola),es(P, omnivora), habita(P, mares), es(P, hermosa), puede(P, cantar), tiene(P, escamas), es(P, mediana), es(P, maliciosa).
+
+criatura(P, cecaelia):-tiene(P, parte_humana),tiene(P, parte_animal),habita(P, mares),es(P, mediana),es(P, omnivora),es(P, hermosa),es(P, solitaria),tiene(P, ventosas), es(P, maliciosa), es(P, magica).
+
+criatura(P, dragon):-es(P, cuadrupeda),es(P, carnivora),es(P,grande),es(P, solitaria),puede(P, volar),puede(P, usar_fuego),puede(P, poner_huevos),tiene(P, escamas),tiene(P,garras),es(P, sabia).
+
+criatura(P, fenix):-es(P, bipeda),es(P, mediana),es(P, omnivora),puede(P, volar),puede(P, usar_fuego),puede(P, poner_huevos),tiene(P, pico),tiene(P,garras),es(P, sabia), es(P, leal).
+
+
+visualiza_pregunta(A):-write(A), write('(si/no)? ').
+pregunta(A,Resp):-visualiza_pregunta(A), read(Resp).
+
+responde(si, A):-!,assertz(cierto(A)).
+responde(no, A):-!,assertz(falso(A)), fail.
+
+preguntable(es(_,_)).
+preguntable(tiene(_,_)).
+preguntable(puede(_,_)).
+preguntable(habita(_,_)).
+
+
+resuelve(true):-!.
+resuelve((A,B)):-!,resuelve(A), resuelve(B).
+resuelve(A):-falso(A), !, fail.
+resuelve(A):-cierto(A),!.
+resuelve(A):-clause(A,B),resuelve(B).
+resuelve(A):-preguntable(A),pregunta(A,Resp),responde(Resp,A).

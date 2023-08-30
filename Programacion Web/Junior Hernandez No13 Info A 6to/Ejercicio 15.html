@@ -1,0 +1,162 @@
+<html>
+        <head>
+                <title>Ejercicio 15</title>
+            <style>
+                body{
+                    background-color: rgb(126, 161, 201)
+                }
+                #ti{
+                    margin-right: 210px;
+                }
+                #provincia{
+                    margin-right: 190px;
+                }
+                #provinci{
+                    margin-right: 242px;
+                }
+                #te{
+                    margin-right: 190px;
+                }
+                #fe{
+                    margin-right: 170px;
+                }
+                #feo{
+                    margin-right: 50px;
+                }
+                #primer{
+                    position:absolute;
+                    left:510px;
+                    top:95px;
+                    background-color: rgb(126, 161, 201)
+                }
+                #Dia{
+                    width: 50px;
+                    height: 22px;
+                    background-color: rgb(255, 255, 255);
+                }
+                #Ano{
+                    width: 60px;
+                    height: 22px;
+                    background-color: rgb(255, 255, 255);
+                }
+                #Formulario{
+                    padding-top: 20px;
+                    border: 1px solid rgb(0, 0, 0);
+                    width: 400px;
+                    
+                }
+                #Boton:hover{
+                    background-color: rgb(148, 181, 218);
+                }
+                .input{
+                background-color: rgb(255, 255, 255);
+                padding: .5rem;
+                margin: .5rem 0;
+                border: none;
+                border-bottom: solid #C8C8C8 .2rem;
+                transition: all .5s;
+                }
+                .nav li a {
+                background-color: rgb(112, 143, 179);
+                color:#fff;
+                text-decoration:none;
+                padding:10px 5px;
+                display:block;  
+                
+            }
+            ul, ol {
+        list-style:none;
+        }
+            .nav > li {
+        float:left;
+        }
+        .nav{
+            margin-top: 5px;
+            margin-left:412px;
+        }
+            .nav li ul li {
+                position:relative;
+            }
+                .nav li a:hover {
+                background-color:rgb(70, 121, 216); 
+                }
+            </style>
+        <body>
+            <center>
+            <ul class="nav">
+                <li><a href="">Archivo</a></li>
+                <li><a href="">Editar</a></li>
+                <li><a href="">Ver</a></li>
+                <li><a href="">Marcadores</a></li>
+                <li><a href="">Widgets</a></li>
+                <li><a href="">Herramientas</a></li>
+                <li><a href="">Ayuda</a></li>
+            </ul>
+            <br>
+            <br>
+            <h1 id = "ti">Rellena tu CV</h1>
+            <h2 id = "primer">Datos personales</h2>
+            <div id = "Formulario">
+            <span id = "provinci">
+            Provincia
+            </span>
+            <br>
+            <select id = "provincia">
+                    <option value="">-Selecciona-</option>
+                    <option value="Barahona">Barahona</option>
+                    <option value="La Vega">La Vega</option>
+                    <option value="Santiago">Santiago</option>
+                    <option value="Santo Domingo">Santo Domingo</option>
+                    <option value="Espaillat">Espaillat</option>
+                    <option value="Duarte">Duarte</option>
+                    <option value="Dajabon">Dajabon</option>
+                    <option value="El Seibo">El Seibo</option>
+                    <option value="Hato Mayor">Hato Mayor</option>
+                    <option value="Samaná">Samaná</option>
+                    
+            </select>
+            <br>
+            <br>
+            <span id = "fe">
+            Fecha de nacimiento</span>
+            <br>
+            <input type="text" id ="Dia" class = "input"/>
+            de
+            <span id = "feo">
+            <select>
+                    <option value="Enenro">Enero</option>
+                    <option value="Febrero">Febrero</option>
+                    <option value="Marzo">Marzo</option>
+                    <option value="Abril">Abril</option>
+                    <option value="Mayo">Mayo</option>
+                    <option value="Junio">Junio</option>
+                    <option value="Julio">Julio</option>
+                    <option value="Agosto">Agosto</option>
+                    <option value="Septiembre">Septiembre</option>
+                    <option value="Octubre">Octubre</option>
+                    <option value="Noviembre">Noviembre</option>
+                    <option value="Diciembre">Diciembre</option>
+            </select>
+            de
+            <input type="text" id ="Ano" class = "input"/>
+        </span>
+            <br>
+            <br>
+        
+            <span id = "te">Temas de interes</span>
+            <br>
+            <textarea id="Temas" name="Temas" cols="40" rows="5" readonly>Arquitectura
+Administracion de bases de datos
+Analisis y programacion
+Arquitectura
+Calidad
+ERP,CRM,Businness Intelligence
+Ingeniero en Sistemas 
+            </textarea>
+            <br>
+            <br>
+</div>
+</center>
+        </body>    
+        </head>
+</html>

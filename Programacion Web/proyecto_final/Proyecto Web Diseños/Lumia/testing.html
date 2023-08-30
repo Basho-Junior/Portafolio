@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+    <button onclick="goTest()">Probar A</button>
+    <button onclick="goTesta()">Probar B</button>
+</body>
+
+
+<script>
+    var test;
+    var testb;
+
+    function goTest() {
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:8080/api/auth/validate/userexist",
+            data: jQuery.param({
+                username: "audric1rosario"
+            }),
+            success: function(received) {
+                test = received;
+            },
+            error: function(error) {
+                alert("No pudo conectarse.");
+            }
+        });
+    }
+
+    function goTesta() {
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:8080/api/auth/validate/userexist",
+            data: jQuery.param({
+                username: "potato"
+            }),
+            success: function(received) {
+                testb = received;
+            },
+            error: function(error) {
+                alert("No pudo conectarse.");
+            }
+        });
+    }
+</script>
+
+</html>

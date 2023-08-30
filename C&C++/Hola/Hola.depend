@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1633534984 source:c:\users\junior\desktop\proyectosc\hola\main.cpp
+	"mpi.h"
+	<iostream>
+

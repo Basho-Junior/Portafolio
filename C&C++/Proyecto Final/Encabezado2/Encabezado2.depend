@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1639082703 source:c:\users\junior\desktop\proyectosc\encabezado2\main.cpp
+	<math.h>
+	"mpi.h"
+	<cstdlib>
+	<iostream>
+

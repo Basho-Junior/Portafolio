@@ -1,0 +1,81 @@
+package Parcial2.encapsulaciones;
+
+import Parcial2.util.RolesApp;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+
+import java.io.Serializable;
+import java.util.Set;
+
+/**
+ * Clase bajo el formato POJO.
+ */
+@Entity
+public class Usuario implements Serializable {
+
+    @Id
+    @GeneratedValue
+    private int id;
+    String usuario;
+    String nombre;
+    String password;
+    //lo estaremos utilizando para los roles.
+    Set<RolesApp> listaRoles;
+
+    public Usuario() {
+    }
+
+    public Usuario(String usuario, String nombre, String password) {
+        this.usuario = usuario;
+        this.nombre = nombre;
+        this.password = password;
+    }
+
+    public Usuario(String usuario, String nombre, String password, Set<RolesApp> listaRoles) {
+        this.usuario = usuario;
+        this.nombre = nombre;
+        this.password = password;
+        this.listaRoles = listaRoles;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Set<RolesApp> getListaRoles() {
+        return listaRoles;
+    }
+
+    public void setListaRoles(Set<RolesApp> listaRoles) {
+        this.listaRoles = listaRoles;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+}

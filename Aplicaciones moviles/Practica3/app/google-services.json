@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "942056126918",
+    "project_id": "pro-zone-357400",
+    "storage_bucket": "pro-zone-357400.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:942056126918:android:5cb584d9f340c6d7581ac7",
+        "android_client_info": {
+          "package_name": "com.example.practica3"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "942056126918-316cip3feoafjtb5qvs8u12r9lu9kvio.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTumodCibgM2RBPB1fcONPf3o-WAbmFec"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "942056126918-316cip3feoafjtb5qvs8u12r9lu9kvio.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:942056126918:android:1841ade6fb7641e9581ac7",
+        "android_client_info": {
+          "package_name": "com.jovanovic.stefan.sqlitetutorial"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "942056126918-316cip3feoafjtb5qvs8u12r9lu9kvio.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTumodCibgM2RBPB1fcONPf3o-WAbmFec"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "942056126918-316cip3feoafjtb5qvs8u12r9lu9kvio.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

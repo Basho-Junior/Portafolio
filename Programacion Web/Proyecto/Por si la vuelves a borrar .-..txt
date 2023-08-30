@@ -1,0 +1,31 @@
+
+-5/30
++++++++Editar el enviar3 para que mande una factura
+Delimiter //+
+Create trigger des after update on estudiante_admision for each row
+begin
+IF new.estado = "Admitido" THEN
+insert into estudiante_inscripcion values (old.ID,old.num_formulario,old.Nombre,old.Apellido,old.Sexo,old.Nacionalidad,old.Direccion_Actual,old.Municipio,old.Pais,old.Fecha_Nacimiento,old.Lugar_Nacimiento,old.Vive_con,old.Religion,old.Escuela_Proce,old.Mensualidad_Actual,old.Hermanos,old.Her_IPISA,old.Her_Cursos,old.Estudio_Uni,old.Viaje);
+End IF;
+End//
+Delimiter ;
+
+Hacer la cosa del login
+pero podemos poner boton en la esquina
+que diga saltar
+y en el login poner el nombre y la siremas
+poner un cuadro debajo del slider de ofertas con un select de productos y promociones
+En contactones hacer una lista como mision vision y valores pero con las tiendas junto su numero de contacto
+Hacer que las personas que tengan siremas puedan acceder al carrito y las que no hayan iniciado sesion cuando quieran usarlos los manden al login
+Arreglar los titulos y agregar el cerra sesion inicio de sesion y el nombre del usuario
+Tablas
+Productos
+Usuarios(admin)
+carrito
+Trigger update se llene donde tu vas a cojer el usuario id y el nombre junto con el producto id y el nombre, seleccioname nombre asadas = adsad sumame la cantidad de veces que compro producto, producto mayor
+Cambiar comida por makeup
+
+Delimiter //
+create trigger resta after insert on carro_product for each row begin update productos set cantidad = cantidad - new.q where cod_product = new.product_id;
+End //
+Delimiter ;

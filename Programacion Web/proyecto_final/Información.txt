@@ -1,0 +1,8 @@
+Aplicación Web: webapp
+Servidor API Gateway: apigatewaybalanceador
+Servidor Balanceador: apigatewaybalanceador
+Servidor Autodescubrimiento: eureka
+Servidor Configuración: configuracion
+Microservicios Usuario: baseusuario
+Microservicios Compra de Eventos: basecompra
+Microservicios Notificaciones: basenotificaciones

@@ -1,0 +1,19 @@
+CACHE MANIFEST
+# v12 - Para obligar al cambio bueno mantener una versión.
+# Esto es un comentario.
+
+#Trama que indica que 
+CACHE:
+/publico/
+/login.html
+/enlace.html
+/enlaces.html
+/users.html
+/recuperar.html
+
+NETWORK:
+/
+/api/*
+
+FALLBACK:
+/ /html5/offline.html

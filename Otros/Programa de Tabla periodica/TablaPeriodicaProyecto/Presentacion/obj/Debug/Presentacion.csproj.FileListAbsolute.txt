@@ -1,0 +1,152 @@
+c:\users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.csprojResolveAssemblyReference.cache
+c:\users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Main.resources
+c:\users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.csproj.GenerateResource.Cache
+c:\users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_hidro.resources
+c:\users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Lithium.resources
+c:\users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Na.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Cs.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Fr.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Hs.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Al.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Uus.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Uuo.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Rg.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Fe.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Co.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Cf.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Dy.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Ho.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Ni.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Mt.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Ds.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Cn.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Tc.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Lr.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Rf.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Uup.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Bk.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Db.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Sg.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Bh.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Uut.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Fl.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Lv.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Tm.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Pa.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Es.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Fm.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Md.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_No.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Cu.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Zn.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Mo.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Mn.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_y.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Nb.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_ru.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.from_Rh.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Ag.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Cd.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Hf.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Ta.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Os.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_ti.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Bi.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Pb.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Po.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_At.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Rn.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Hoo.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_B.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_c.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Si.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_P.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.Actualizaciones.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_S.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_creditos.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\bin\Debug\Tabla Periodica de Werner.exe.config
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\bin\Debug\Tabla Periodica de Werner.exe.manifest
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\bin\Debug\Tabla Periodica de Werner.application
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\bin\Debug\Tabla Periodica de Werner.exe
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\bin\Debug\Tabla Periodica de Werner.pdb
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Tabla.Properties.Resources.resources
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Tabla Periodica de Werner.exe.manifest
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Tabla Periodica de Werner.application
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Tabla Periodica de Werner.exe
+C:\Users\flow3\onedrive\documents\visual studio 2013\Projects\TablaPeriodicaProyecto\Presentacion\obj\Debug\Tabla Periodica de Werner.pdb
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\bin\Debug\Tabla Periodica de Werner.exe.config
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\bin\Debug\Tabla Periodica de Werner.exe.manifest
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\bin\Debug\Tabla Periodica de Werner.application
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\bin\Debug\Tabla Periodica de Werner.exe
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\bin\Debug\Tabla Periodica de Werner.pdb
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.csprojResolveAssemblyReference.cache
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.Actualizaciones.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Cs.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Fr.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Ag.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_At.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_B.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Bh.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Bi.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Bk.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_c.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Cd.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Cf.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Cn.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Co.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_creditos.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Cu.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Db.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Ds.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Dy.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Es.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Fe.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Fl.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Fm.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Hf.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_hidro.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Ho.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Hoo.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Hs.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Lithium.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Lr.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Lv.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Md.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Mn.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Mo.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Mt.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Na.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Nb.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Ni.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_No.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Os.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_P.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Pa.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Pb.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Po.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Rf.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Rg.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Rn.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_ru.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_S.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Sg.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Si.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Ta.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Tc.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_ti.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Tm.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Uuo.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Uup.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Uus.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Uut.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_y.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Zn.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Al.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.from_Rh.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Tabla.Properties.Resources.resources
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.csproj.GenerateResource.Cache
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Tabla Periodica de Werner.exe.manifest
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Tabla Periodica de Werner.application
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Tabla Periodica de Werner.exe
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Tabla Periodica de Werner.pdb
+C:\Users\junio\Desktop\publicar\TablaPeriodicaProyecto\Presentacion\obj\Debug\Presentacion.frm_Tabla.resources

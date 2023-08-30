@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1573219369 source:c:\users\junior\desktop\proyectosc\loquesemueve\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.c>
+

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style>
+        #Jun{
+            border: solid rgb(0, 0, 0) 1px;
+            width: 270px;
+            height: 130px;
+        }
+        #titulo{
+            background-color: rgb(238, 188, 51);
+            border: solid rgb(0, 0, 0) 1px;
+            width: 270px;
+        }
+        #User{
+            margin-left:20px;
+        }
+        #bot{
+            background-color: rgb(255, 255, 255);
+            border: solid rgb(0, 0, 0) 1px;
+            transition: all .5s;
+            margin-left:170px;
+        }
+        #bot:hover {
+	        background-color: rgb(241, 241, 241);
+        }
+        </style>
+        <script>
+                function nose(){
+                var Nombre="Junior";
+                var t = document.getElementById("Nombre1").value;
+                var Contrasena= "123";
+                var h = document.getElementById("Contrasena1").value;
+                var pantalla = "https://www.youtube.com/channel/UCb6ixSEqOPwWaQpESoYEX_Q?view_as=subscriber";
+                    if (Nombre == t && Contrasena == h){
+                        window.location=pantalla;
+                    }else{
+                        alert("Usuario no autorizado");
+                    }
+                }
+        </script>
+        </head>
+                <body>
+                <center>
+                    <br>
+                    <h4 id = "titulo">Practica Funciones y condicionales</h4>
+                    <div id="Jun">
+                        <br>
+                        <span id = "User"><label for = "Nombre">Usuario:</label>
+                        <input type="text" placeholder="&#128100;  Nombre" id="Nombre1" class = "input" required autofocus>
+                        </span>
+                        <br>
+                        <br>
+                        <label for = "Contraseña">Contraseña:</label>
+                        <input type="password" placeholder="&#128274;  Contraseña"  id="Contrasena1" class = "input" required autofocus>
+                        <br>
+                        <br>
+                        <input onclick=nose() type="button" id = "bot"value = ACEPTAR>
+                    </div>
+                </center>
+                </body>            
+                </html>

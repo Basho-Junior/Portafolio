@@ -1,0 +1,49 @@
+plugins {
+	id 'org.springframework.boot' version '2.5.7'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+	mavenCentral()
+	maven { url 'https://repo.spring.io/milestone' }
+}
+
+ext {
+	set('springCloudVersion', "2020.0.4")
+}
+
+dependencies {
+	// Actuator
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	// Librería para centralizar la configuración.
+	//implementation 'org.springframework.cloud:spring-cloud-starter-config'
+	// Eureka client
+	//implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+	// Base de datos H2
+	implementation 'com.h2database:h2'
+	// Spring Security
+	implementation 'org.springframework.boot:spring-boot-starter-security:2.2.0.RELEASE'
+	// Web Token (JWT)
+	implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.6.0'
+
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+	}
+}
+
+
+test {
+	useJUnitPlatform()
+}

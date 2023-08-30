@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Proyecto Final - Acortador</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!--link rel="stylesheet" href="css/stylesheet.css">-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="../../VanillaQR.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="table-wrapper">
+        <div class="table-title">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h2>Listado<b> de Enlaces</b></h2>
+                </div>
+                <div th:if="${usuario == null}" class="col-sm-6">
+                    <a href="/autenti" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>LOGIN</span></a>
+                    <a href="/" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>ACORTADOR-WEB</span></a>
+                </div>
+                <div th:if="${usuario != null}" class="col-sm-6">
+                    <a href="/" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>ACORTADOR-WEB</span></a>
+                    <a th:if="${usuario.getRole() == 'ADMIN'}" href="/enlaces" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>LISTAR ENLACES</span></a>
+                    <br></br>
+                    <a th:if="${usuario.getRole() == 'ADMIN'}" href="/usuarios" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>LISTAR USUARIOS</span></a>
+                    <br></br>
+                    <a href="/logout" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>LOGOUT</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row row-cols-1 row-cols-md-5 g-4 mb-3 mt-3 m-auto  text-center" style="max-width: 97%">
+
+    <div class="col">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Original</h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text" th:text="${enlace.URL}"></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col" >
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Acortado</h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text" th:text="${enlace.URLF}"></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col" >
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Creación</h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text" th:text="${enlace.fecha}"></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Total de Visitas</h5>
+
+            </div>
+            <div class="card-body">
+                <p class="card-text" th:text="${enlace.visitas}"></p>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Codigo QR</h5>
+            </div>
+            <div class="card-body">
+                <a th:href="@{'/re/' + ${enlace.id}}"> <div  class="m-auto" id="qrcode" ></div></a>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="row row-cols-1 row-cols-md-2 mb-3 mt-3 m-auto  text-center" style="max-width: 97%">
+    <div class="col-6">
+
+        <div class="card m-auto" style="max-width: 95%; padding-bottom: 10px">
+            <div class="card-header">
+                <h5 class="card-title text-center">
+                    Grafico de visitas
+                </h5>
+            </div>
+            <div class="card-body">
+                <canvas th:if="${map  != null}" id="myChart"></canvas>
+                <h3 th:if="${map  == null}" class="m-auto text-center">No hay datos disponibles</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Preview</h5>
+            </div>
+            <div class="card-body">
+                <img th:src="@{${'data:image/png;base64,' + enlace.getFotoBase64()}}" width="1050" height="1000" class="img-fluid rounded-start">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card m-auto" style="max-width: 95%">
+    <div class="card-header">
+        <h5 class="card-title text-center" >
+            Lista de Visitas Realizadas
+        </h5>
+
+    </div>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">IP</th>
+                <th scope="col">Navegador</th>
+                <th scope="col">Sistema Operativo</th>
+                <th scope="col">Fecha</th>
+            </tr>
+            </thead>
+            <tbody>
+            <form th:each="visita : ${enlace.visitantes}">
+            <tr>
+                <td th:text="${visita.ipaddress}"></td>
+                <td th:text="${visita.navegador}"></td>
+                <td th:text="${visita.sistema}"></td>
+                <td th:text="${visita.fecha}"></td>
+            </tr>
+            </form>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    var qr3 = new VanillaQR({
+        url: /*[[${enlace.URL}]]*/ 'default',
+        width: 400,
+        height: 400,
+        colorLight: "#FAA7F9",
+        colorDark: "#3A005E",
+
+        noBorder: true
+    });
+
+    var imageElement = qr3.toImage("png");
+
+    document.getElementById('qrcode').appendChild(imageElement);
+    /*]]>*/
+</script>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    let myChart = document.getElementById('myChart').getContext('2d');
+
+    // Global Options
+    Chart.defaults.global.defaultFontFamily = 'Lato';
+    Chart.defaults.global.defaultFontSize = 18;
+    Chart.defaults.global.defaultFontColor = '#777';
+
+    let massPopChart = new Chart(myChart, {
+        type:'bar',
+        data:{
+            labels:/*[[${llaves}]]*/ 'default',
+            datasets:[{
+                label:'Cantidad de Visitas',
+                data:/*[[${valores}]]*/ 'default',
+                backgroundColor:[
+                    'rgba(255, 99, 132, 0.6)',
+                    'rgba(54, 162, 235, 0.6)',
+                    'rgba(255, 206, 86, 0.6)',
+                    'rgba(75, 192, 192, 0.6)',
+                    'rgba(153, 102, 255, 0.6)',
+                    'rgba(255, 159, 64, 0.6)',
+                    'rgba(255, 99, 132, 0.6)'
+                ],
+                borderWidth:1,
+                borderColor:'#777',
+                hoverBorderWidth:3,
+                hoverBorderColor:'#000'
+            }]
+        },
+        options:{
+            title:{
+                display:true,
+                text:'Visitas por Fecha',
+                fontSize:25
+            },
+            legend:{
+                display:true,
+                position:'right',
+                labels:{
+                    fontColor:'#000'
+                }
+            },
+            layout:{
+                padding:{
+                    left:50,
+                    right:0,
+                    bottom:0,
+                    top:0
+                }
+            },
+            tooltips:{
+                enabled:true
+            }
+        }
+    });
+    /*]]>*/
+</script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+<meta charset ="UTF-8">
+<meta name = "viewport" content ="width=device-width,initial-scale=1.0">
+<link href = "https://fonts.googleapis.com/css?family=Lato:400,900" rel="stylesheet">
+<link rel="stylesheet" href = "css/estilos.css">
+<link rel="stylesheet" href = "css/estilos1.css">
+<tittle>Formulario</tittle>
+</head>
+<body>
+    <div class = "contenedor">
+        <div class = "form_arriba">
+            <h2>Rellena tu <span>CV</span></h2>
+        </div>
+        <form class ="form_reg" action ="">
+                Provincia
+            <br>
+            <select class = "junior" required>
+                    <option value="">-Selecciona-</option>
+                    <option value="Barahona">Barahona</option>
+                    <option value="La Vega">La Vega</option>
+                    <option value="Santiago">Santiago</option>
+                    <option value="Santo Domingo">Santo Domingo</option>
+                    <option value="Espaillat">Espaillat</option>
+                    <option value="Duarte">Duarte</option>
+                    <option value="Dajabon">Dajabon</option>
+                    <option value="El Seibo">El Seibo</option>
+                    <option value="Hato Mayor">Hato Mayor</option>
+                    <option value="Samaná">Samaná</option>
+            </select>
+            <br>
+            <br>
+            <div>
+                    Fecha de nacimiento
+                    <br>
+                    <input type="text" id ="Dia" class = "input1"/ placeholder="Dia" required> de
+                    <select id=nose required>
+                            <option value="Enenro">Enero</option>
+                            <option value="Febrero">Febrero</option>
+                            <option value="Marzo">Marzo</option>
+                            <option value="Abril">Abril</option>
+                            <option value="Mayo">Mayo</option>
+                            <option value="Junio">Junio</option>
+                            <option value="Julio">Julio</option>
+                            <option value="Agosto">Agosto</option>
+                            <option value="Septiembre">Septiembre</option>
+                            <option value="Octubre">Octubre</option>
+                            <option value="Noviembre">Noviembre</option>
+                            <option value="Diciembre">Diciembre</option>
+                    </select>
+                del <input type="text" id ="Ano" class = "input1" placeholder="Anio" required/>
+            </div>
+            <br>
+            <br>
+            Temas de interes
+            <br>
+            <textarea id="Temas" name="Temas" cols="40" rows="5" readonly>Arquitectura
+Administracion de bases de datos
+Analisis y programacion
+Arquitectura
+Calidad
+ERP,CRM,Businness Intelligence
+Ingeniero en Sistemas 
+            </textarea>
+            <br>
+            <br>
+            <div class ="btn_form">
+                <input class="btn_submit" type="submit" value="REGISTRARSE">
+                <input class="btn_reset" type ="reset" value ="LIMPIAR">
+            </div>
+        </form>
+    </div>
+</body>
+</html>

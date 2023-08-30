@@ -1,0 +1,155 @@
+:-dynamic cierto/1.
+:-dynamic falso/1.
+
+/*
+  Adivinador de criaturas mitologicas.
+
+    start with ?- resuelve(criatura(partida1,P))     */
+
+
+bipeda(P) :- sostiene(P,en_dos_patas).
+bipeda(P) :- sostiene(P,en_dos_pies).
+
+cuadrupeda(P):- sostiene(P,en_cuatro_patas).
+
+humanoide(P):- tiene(P,parte_humana).
+
+animal(P):- tiene(P,parte_animal).
+
+vuela(P)    :- posee(P,alas).
+vuela(P)    :- posee(P,magia).
+
+carnivora(P):- come(P,humanos).
+carnivora(P):- come(P,carne).
+
+omnivora(P):- come(P,todo).
+omnivora(P):- come(P,no_tiene_dieta_definida).
+
+herbivora(P):- come(P,no_carne).
+herbivora(P):- come(P,verduras),
+            come(P,frutas),
+            come(P,trigo),
+            come(P,miel).
+
+hermosa(P):- apariencia(P,linda).
+hermosa(P):- apariencia(P,majestuosa).
+
+grotesca(P):- apariencia(P,fea).
+grotesca(P):- apariencia(P,extrania).
+
+criatura(P, duende) :-  bipeda(P),humanoide(P),grotesca(P),tamanio(P,pequenia),omnivora(P),vive(P,en_grupo),habita(P,bosques),puede(P,hacer_travesuras).
+
+
+criatura(P, minotauro) :- bipeda(P),humanoide(P),animal(P),grotesca(P),tamanio(P,mediana),omnivora(P),tiene(P,cuernos),es(P,guerrera).
+
+criatura(P, ciclope)   :- bipeda(P),humanoide(P),grotesca(P),tamanio(P,grande),carnivora(P), es(P,guerrera).
+
+criatura(P, hada)  :-  bipeda(P),humanoide(P),hermosa(P),tamanio(P,pequenia),herbivora(P),vive(P,en_grupo),habita(P,bosques), vuela(P).
+
+
+criatura(P, fauno)  :-  bipeda(P),humanoide(P),animal(P),tamanio(P,mediana),omnivora(P),habita(P,bosques),tiene(P,cuernos),es(P,pacifica).
+
+criatura(P, gorgona)    :- bipeda(P),humanoide(P),animal(P),tamanio(P,mediana),omnivora(P),es(P,venenosa).
+
+criatura(P, centauro) :-  cuadrupeda(P),
+             humanoide(P),animal(P),
+             tamanio(P,mediana),
+             omnivora(P),
+	     es(P,guerrera),
+             tiene(P,pezunias).
+
+
+criatura(P, pegaso)   :-  cuadrupeda(P),
+             animal(P),
+             hermosa(P),
+             tamanio(P,mediana),
+             herbivora(P),
+	     vuela(P),
+             tiene(P,pezunias).
+
+
+criatura(P, grifo) :-     cuadrupeda(P),
+             animal(P),
+             apariencia(P,feroz),
+             tamanio(P,mediana),
+             omnivora(P),
+	     es(P,guerrera),
+	     vuela(P),
+             tiene(P,garras).
+
+
+criatura(P, sirena) :-    humanoide(P),animal(P),
+	     hermosa(P),
+             tamanio(P,mediana),
+             omnivora(P),
+	     vive(P,en_grupo),
+	     habita(P,mares),
+             tiene(P,escamas),
+             puede(P,cantar).
+
+
+criatura(P, cecaelia) :-  humanoide(P),animal(P),
+	     hermosa(P),
+             tamanio(P,mediana),
+             omnivora(P),
+             habita(P,mares),
+	     vive(P,en_soledad),
+             tiene(P,ventosas).
+
+
+criatura(P, dragon) :-    cuadrupeda(P),
+             apariencia(P,feroz),
+             tamanio(P,grande),
+	     carnivora(P),
+	     vuela(P),
+             puede(P,usar_fuego).
+
+
+criatura(P, fenix) :-     bipeda(P),
+             tamanio(P,mediana),
+	     omnivora(P),
+	     vuela(P),
+             puede(P,usar_fuego).
+
+
+
+visualiza_pregunta(A):-write(A), write('(si/no)? ').
+pregunta(A,Resp):-visualiza_pregunta(A), read(Resp).
+
+
+responde(si, A):-!,assertz(cierto(A)).
+responde(no, A):-!,assertz(falso(A)), fail.
+
+preguntable(es(_,_)).
+preguntable(sostiene(_,_)).
+preguntable(tiene(_,_)).
+preguntable(puede(_,_)).
+preguntable(apariencia(_,_)).
+preguntable(tamanio(_,_)).
+preguntable(vive(_,_)).
+preguntable(come(_,_)).
+preguntable(habita(_,_)).
+
+
+resuelve(true):-!.
+resuelve((A,B)):-!,resuelve(A), resuelve(B).
+resuelve(A):-falso(A), !, fail.
+resuelve(A):-cierto(A),!.
+resuelve(A):-clause(A,B),resuelve(B).
+resuelve(A):-preguntable(A),pregunta(A,Resp),responde(Resp,A).
+
+
+borrar :- retract(cierto(_)),fail.
+borrar :- retract(falso(_)),fail.
+borrar.
+
+
+
+
+
+
+
+
+
+
+

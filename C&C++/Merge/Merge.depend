@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1637766592 source:c:\users\junior\desktop\proyectosc\merge\main.cpp
+	<algorithm>
+	<vector>
+	"mpi.h"
+	<iostream>
+

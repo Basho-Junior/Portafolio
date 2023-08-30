@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<li>Si no se quiere registrar puede ingresar con usuario admin y contrasenia admin</li>
+<li><a href="login.html">Iniciar Sesion</a></li>
+<script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+            navigator.serviceWorker.register('/serviceworkers.js', { scope: '/' }).then(function(registration) {
+                // Notificando el registro del service workwe
+                console.log('Registrando el servicio en el ambiente: ', registration.scope);
+            }, function(err) {
+                console.log('Service Worker falló el registro: ', err);
+            });
+        });
+    }
+</script>
+</body>
+</html>

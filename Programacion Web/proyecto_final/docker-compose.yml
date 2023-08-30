@@ -1,0 +1,160 @@
+version: "3.9"
+services:
+  webapp:
+    build: ./webapp
+    environment:
+      APPLICATION_PORT: $WEBAPP_PORT
+    ports:
+      - 9200:$WEBAPP_PORT
+  configuracion:
+    build: ./configuracion
+    environment:
+      APPLICATION_PORT: $CONFIG_PORT
+  eurekasv:
+    build: ./eureka
+    environment:
+      APPLICATION_PORT: $EUREKA_PORT
+      CONFIGURACION_URL: http://configuracion:$CONFIG_PORT/
+    ports:
+      - 8081:$EUREKA_PORT
+  balanceadorgateway:
+    build: ./gateway
+    environment:
+      APPLICATION_PORT: $GATEWAY_PORT
+      EUREKA_URI: http://eurekasv:$EUREKA_PORT/eureka
+      CONFIGURACION_URL: http://configuracion:$CONFIG_PORT/
+    ports:
+      - 8080:$GATEWAY_PORT
+#Micro servicios
+#Usuarios
+  micro_usuario_1:
+    build: ./baseusuario
+    environment:
+      APPLICATION_PORT: 7000
+      EUREKA_URI: http://eurekasv:$EUREKA_PORT/eureka
+      CONFIGURACION_URL: http://configuracion:$CONFIG_PORT/
+      DB_URL: jdbc:mysql://dbusuario:$DB_USER_PORT/$DB_USER_DATABASE?autoReconnect=true&useSSL=false
+      DB_USER: $DB_MASTER_USER
+      DB_PASS: $DB_MASTER_PWD
+  micro_usuario_2:
+    build: ./baseusuario
+    environment:
+      APPLICATION_PORT: 7001
+      EUREKA_URI: http://eurekasv:$EUREKA_PORT/eureka
+      CONFIGURACION_URL: http://configuracion:$CONFIG_PORT/
+      DB_URL: jdbc:mysql://dbusuario:$DB_USER_PORT/$DB_USER_DATABASE?autoReconnect=true&useSSL=false
+      DB_USER: $DB_MASTER_USER
+      DB_PASS: $DB_MASTER_PWD
+  micro_usuario_3:
+    build: ./baseusuario
+    environment:
+      APPLICATION_PORT: 7002
+      EUREKA_URI: http://eurekasv:$EUREKA_PORT/eureka
+      CONFIGURACION_URL: http://configuracion:$CONFIG_PORT/
+      DB_URL: jdbc:mysql://dbusuario:$DB_USER_PORT/$DB_USER_DATABASE?autoReconnect=true&useSSL=false
+      DB_USER: $DB_MASTER_USER
+      DB_PASS: $DB_MASTER_PWD
+#Ventas
+  micro_ventas_1:
+    build: ./basecompra
+    environment:
+      APPLICATION_PORT: 8000
+      EUREKA_URI: http://eurekasv:$EUREKA_PORT/eureka
+      CONFIGURACION_URL: http://configuracion:$CONFIG_PORT/
+      DB_URL: jdbc:mysql://dbventa:$DB_VENTAS_PORT/$DB_VENTAS_DATABASE?autoReconnect=true&useSSL=false
+      DB_USER: $DB_MASTER_USER
+      DB_PASS: $DB_MASTER_PWD
+  micro_ventas_2:
+    build: ./basecompra
+    environment:
+      APPLICATION_PORT: 8001
+      EUREKA_URI: http://eurekasv:$EUREKA_PORT/eureka
+      CONFIGURACION_URL: http://configuracion:$CONFIG_PORT/
+      DB_URL: jdbc:mysql://dbventa:$DB_VENTAS_PORT/$DB_VENTAS_DATABASE?autoReconnect=true&useSSL=false
+      DB_USER: $DB_MASTER_USER
+      DB_PASS: $DB_MASTER_PWD
+  micro_ventas_3:
+    build: ./basecompra
+    environment:
+      APPLICATION_PORT: 8002
+      EUREKA_URI: http://eurekasv:$EUREKA_PORT/eureka
+      CONFIGURACION_URL: http://configuracion:$CONFIG_PORT/
+      DB_URL: jdbc:mysql://dbventa:$DB_VENTAS_PORT/$DB_VENTAS_DATABASE?autoReconnect=true&useSSL=false
+      DB_USER: $DB_MASTER_USER
+      DB_PASS: $DB_MASTER_PWD
+#Micro
+  micro_notificaciones_1:
+    build: ./basenotificaciones
+    environment:
+      APPLICATION_PORT: 9000
+      EUREKA_URI: http://eurekasv:$EUREKA_PORT/eureka
+      CONFIGURACION_URL: http://configuracion:$CONFIG_PORT/
+      DB_URL: jdbc:mysql://dbnotificaciones:$DB_NOTIFICACION_PORT/$DB_NOTIFICACION_DATABASE?autoReconnect=true&useSSL=false
+      DB_USER: $DB_MASTER_USER
+      DB_PASS: $DB_MASTER_PWD
+  micro_notificaciones_2:
+    build: ./basenotificaciones
+    environment:
+      APPLICATION_PORT: 9001
+      EUREKA_URI: http://eurekasv:$EUREKA_PORT/eureka
+      CONFIGURACION_URL: http://configuracion:$CONFIG_PORT/
+      DB_URL: jdbc:mysql://dbnotificaciones:$DB_NOTIFICACION_PORT/$DB_NOTIFICACION_DATABASE?autoReconnect=true&useSSL=false
+      DB_USER: $DB_MASTER_USER
+      DB_PASS: $DB_MASTER_PWD
+  micro_notificaciones_3:
+    build: ./basenotificaciones
+    environment:
+      APPLICATION_PORT: 9002
+      EUREKA_URI: http://eurekasv:$EUREKA_PORT/eureka
+      CONFIGURACION_URL: http://configuracion:$CONFIG_PORT/
+      DB_URL: jdbc:mysql://dbnotificaciones:$DB_NOTIFICACION_PORT/$DB_NOTIFICACION_DATABASE?autoReconnect=true&useSSL=false
+      DB_USER: $DB_MASTER_USER
+      DB_PASS: $DB_MASTER_PWD
+#base de datos
+  dbusuario:
+    build: ./UserSQL
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: $DB_MASTER_PWD
+      MYSQL_DATABASE: $DB_USER_DATABASE
+      MYSQL_TCP_PORT: $DB_USER_PORT
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+    volumes:
+      - db_data_user:/var/lib/mysql
+  dbventa:
+    build: ./VentasSQL
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: $DB_MASTER_PWD
+      MYSQL_DATABASE: $DB_VENTAS_DATABASE
+      MYSQL_TCP_PORT: $DB_VENTAS_PORT
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+    volumes:
+      - db_data_ventas:/var/lib/mysql
+  dbnotificaciones:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: $DB_MASTER_PWD
+      MYSQL_DATABASE: $DB_NOTIFICACION_DATABASE
+      MYSQL_TCP_PORT: $DB_NOTIFICACION_PORT
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+    volumes:
+      - db_data_notificaciones:/var/lib/mysql
+
+#    ports:
+#      - $HOST_DB_WEB_CLIENT_PORT:80
+
+volumes:
+  db_data_user:
+  db_data_ventas:
+  db_data_notificaciones:

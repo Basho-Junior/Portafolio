@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.15.1/css/ol.css" type="text/css">
+    <style>
+        .map {
+            height: 400px;
+            width: 100%;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.15.1/build/ol.js"></script>
+    <title>OpenLayers example</title>
+</head>
+<body>
+<a href="/estudiantes" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Volver</span></a>
+<h2>My Map</h2>
+<div id="map" class="map"></div>
+<input type="hidden" name="latitud" id="latitud" th:value="${historial.latitud}"/>
+<input type="hidden" name="longitud" id="longitud" th:value="${historial.longitud}"/>
+
+<script type="text/javascript">
+    var map = new ol.Map({
+        target: 'map',
+        layers: [
+            new ol.layer.Tile({
+                source: new ol.source.OSM()
+            })
+        ],
+        view: new ol.View({
+            center: ol.proj.fromLonLat([document.getElementById('longitud').value, document.getElementById('latitud').value]),
+            zoom: 11
+        })
+    });
+
+    var markers = new ol.layer.Vector({
+        source: new ol.source.Vector(),
+        style: new ol.style.Style({
+            image: new ol.style.Icon({
+                anchor: [0.5, 1],
+                src: '/html5/marker.png'
+            })
+        })
+    });
+    map.addLayer(markers);
+
+    var marker = new ol.Feature(new ol.geom.Point(ol.proj.fromLonLat([document.getElementById('longitud').value, document.getElementById('latitud').value])));
+    markers.getSource().addFeature(marker);
+</script>
+</body>
+</html>

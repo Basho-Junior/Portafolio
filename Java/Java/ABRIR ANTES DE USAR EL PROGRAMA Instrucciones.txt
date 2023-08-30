@@ -1,0 +1,2 @@
+Al iniciar el programa la lista se va a encontrar vacia asi que debera de registrar a una o mas personas para que las acumele
+y luego le pedira repetir el programa si quiere ver la lista presione la tecla s y luego la opcion deseada.

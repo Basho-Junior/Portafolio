@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Bootstrap CRUD Data Table for Database with Modal Form</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            color: #566787;
+            background: #f5f5f5;
+            font-family: 'Varela Round', sans-serif;
+            font-size: 13px;
+        }
+        .table-responsive {
+            margin: 30px 0;
+        }
+        .table-wrapper {
+            background: #fff;
+            padding: 20px 25px;
+            border-radius: 3px;
+            min-width: 1000px;
+            box-shadow: 0 1px 1px rgba(0,0,0,.05);
+        }
+        .table-title {
+            padding-bottom: 15px;
+            background: #435d7d;
+            color: #fff;
+            padding: 16px 30px;
+            min-width: 100%;
+            margin: -20px -25px 10px;
+            border-radius: 3px 3px 0 0;
+        }
+        .table-title h2 {
+            margin: 5px 0 0;
+            font-size: 24px;
+        }
+        .table-title .btn-group {
+            float: right;
+        }
+        .table-title .btn {
+            color: #fff;
+            float: right;
+            font-size: 13px;
+            border: none;
+            min-width: 50px;
+            border-radius: 2px;
+            border: none;
+            outline: none !important;
+            margin-left: 10px;
+        }
+        .table-title .btn i {
+            float: left;
+            font-size: 21px;
+            margin-right: 5px;
+        }
+        .table-title .btn span {
+            float: left;
+            margin-top: 2px;
+        }
+        table.table tr th, table.table tr td {
+            border-color: #e9e9e9;
+            padding: 12px 15px;
+            vertical-align: middle;
+        }
+        table.table tr th:first-child {
+            width: 60px;
+        }
+        table.table tr th:last-child {
+            width: 100px;
+        }
+        table.table-striped tbody tr:nth-of-type(odd) {
+            background-color: #fcfcfc;
+        }
+        table.table-striped.table-hover tbody tr:hover {
+            background: #f5f5f5;
+        }
+        table.table th i {
+            font-size: 13px;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+        table.table td:last-child i {
+            opacity: 0.9;
+            font-size: 22px;
+            margin: 0 5px;
+        }
+        table.table td a {
+            font-weight: bold;
+            color: #566787;
+            display: inline-block;
+            text-decoration: none;
+            outline: none !important;
+        }
+        table.table td a:hover {
+            color: #2196F3;
+        }
+        table.table td a.edit {
+            color: #FFC107;
+        }
+        table.table td a.delete {
+            color: #F44336;
+        }
+        table.table td i {
+            font-size: 19px;
+        }
+        table.table .avatar {
+            border-radius: 50%;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+        .pagination {
+            float: right;
+            margin: 0 0 5px;
+        }
+        .pagination li a {
+            border: none;
+            font-size: 13px;
+            min-width: 30px;
+            min-height: 30px;
+            color: #999;
+            margin: 0 2px;
+            line-height: 30px;
+            border-radius: 2px !important;
+            text-align: center;
+            padding: 0 6px;
+        }
+        .pagination li a:hover {
+            color: #666;
+        }
+        .pagination li.active a, .pagination li.active a.page-link {
+            background: #03A9F4;
+        }
+        .pagination li.active a:hover {
+            background: #0397d6;
+        }
+        .pagination li.disabled i {
+            color: #ccc;
+        }
+        .pagination li i {
+            font-size: 16px;
+            padding-top: 6px
+        }
+        .hint-text {
+            float: left;
+            margin-top: 10px;
+            font-size: 13px;
+        }
+        /* Custom checkbox */
+        .custom-checkbox {
+            position: relative;
+        }
+        .custom-checkbox input[type="checkbox"] {
+            opacity: 0;
+            position: absolute;
+            margin: 5px 0 0 3px;
+            z-index: 9;
+        }
+        .custom-checkbox label:before{
+            width: 18px;
+            height: 18px;
+        }
+        .custom-checkbox label:before {
+            content: '';
+            margin-right: 10px;
+            display: inline-block;
+            vertical-align: text-top;
+            background: white;
+            border: 1px solid #bbb;
+            border-radius: 2px;
+            box-sizing: border-box;
+            z-index: 2;
+        }
+        .custom-checkbox input[type="checkbox"]:checked + label:after {
+            content: '';
+            position: absolute;
+            left: 6px;
+            top: 3px;
+            width: 6px;
+            height: 11px;
+            border: solid #000;
+            border-width: 0 3px 3px 0;
+            transform: inherit;
+            z-index: 3;
+            transform: rotateZ(45deg);
+        }
+        .custom-checkbox input[type="checkbox"]:checked + label:before {
+            border-color: #03A9F4;
+            background: #03A9F4;
+        }
+        .custom-checkbox input[type="checkbox"]:checked + label:after {
+            border-color: #fff;
+        }
+        .custom-checkbox input[type="checkbox"]:disabled + label:before {
+            color: #b8b8b8;
+            cursor: auto;
+            box-shadow: none;
+            background: #ddd;
+        }
+        /* Modal styles */
+        .modal .modal-dialog {
+            max-width: 400px;
+        }
+        .modal .modal-header, .modal .modal-body, .modal .modal-footer {
+            padding: 20px 30px;
+        }
+        .modal .modal-content {
+            border-radius: 3px;
+            font-size: 14px;
+        }
+        .modal .modal-footer {
+            background: #ecf0f1;
+            border-radius: 0 0 3px 3px;
+        }
+        .modal .modal-title {
+            display: inline-block;
+        }
+        .modal .form-control {
+            border-radius: 2px;
+            box-shadow: none;
+            border-color: #dddddd;
+        }
+        .modal textarea.form-control {
+            resize: vertical;
+        }
+        .modal .btn {
+            border-radius: 2px;
+            min-width: 100px;
+        }
+        .modal form label {
+            font-weight: normal;
+        }
+    </style>
+    <script>
+        //llamando el webworker
+        var worker = new Worker('/js/webworker-ajax.js');
+
+
+        worker.onmessage = function (e) { //recuperando la información
+            if(e.data.cmd = 'respuesta'){
+                document.getElementById('resultado').textContent = e.data.data;
+            }
+
+        };
+        //dependiendo el navegador busco la referencia del objeto.
+        var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB
+
+        //indicamos el nombre y la versión
+        var dataBase = indexedDB.open("programacion_web", 1);
+
+
+        //se ejecuta la primera vez que se crea la estructura
+        //o se cambia la versión de la base de datos.
+        dataBase.onupgradeneeded = function (e) {
+            console.log("Creando la estructura de la tabla");
+
+            //obteniendo la conexión activa
+            active = dataBase.result;
+
+            //creando la colección:
+            //En este caso, la colección, tendrá un ID autogenerado.
+            var estudiantes = active.createObjectStore("estudiantes", { keyPath : 'matricula', autoIncrement : false });
+
+            //creando los indices. (Dado por el nombre, campo y opciones)
+            estudiantes.createIndex('por_indice', 'indice', {unique : false});
+
+        };
+
+        //El evento que se dispara una vez, lo
+        dataBase.onsuccess = function (e) {
+            console.log('Proceso ejecutado de forma correctamente');
+        };
+
+        dataBase.onerror = function (e) {
+            console.error('Error en el proceso: '+e.target.errorCode);
+        };
+
+
+        function agregarEstudiante() {
+            var dbActiva = dataBase.result; //Nos retorna una referencia al IDBDatabase.
+
+            //Para realizar una operación de agreagr, actualización o borrar.
+            // Es necesario abrir una transacción e indicar un modo: readonly, readwrite y versionchange
+            var transaccion = dbActiva.transaction(["estudiantes"], "readwrite");
+
+            //Manejando los errores.
+            transaccion.onerror = function (e) {
+                alert(request.error.name + '\n\n' + request.error.message);
+            };
+
+            transaccion.oncomplete = function (e) {
+                document.querySelector("#matricula").value = '';
+                alert('Objeto agregado correctamente');
+            };
+
+            //abriendo la colección de datos que estaremos usando.
+            var estudiantes = transaccion.objectStore("estudiantes");
+
+            //Para agregar se puede usar add o put, el add requiere que no exista
+            // el objeto.
+            var request = estudiantes.put({
+                matricula: document.querySelector("#matricula").value,
+                nombre: document.querySelector("#nombre").value,
+                sector: document.querySelector("#sector").value,
+                nivel: document.querySelector("#nivel").value
+            });
+
+            request.onerror = function (e) {
+                var mensaje = "Error: "+e.target.errorCode;
+                console.error(mensaje);
+                alert(mensaje)
+            };
+
+            request.onsuccess = function (e) {
+                console.log("Datos Procesado con exito");
+                document.querySelector("#matricula").value = "";
+                document.querySelector("#nombre").value = "";
+                document.querySelector("#sector").value = "";
+                document.querySelector("#nivel").value = "";
+            };
+
+
+        }
+
+        /**
+         * Permite listar todos los datos digitados.
+         */
+        function listarDatos() {
+            //por defecto si no lo indico el tipo de transacción será readonly
+            var data = dataBase.result.transaction(["estudiantes"]);
+            var estudiantes = data.objectStore("estudiantes");
+            var contador = 0;
+            var estudiantes_recuperados=[];
+
+            //abriendo el cursor.
+            estudiantes.openCursor().onsuccess=function(e) {
+                //recuperando la posicion del cursor
+                var cursor = e.target.result;
+                if(cursor){
+                    contador++;
+                    //recuperando el objeto.
+                    estudiantes_recuperados.push(cursor.value);
+
+                    //Función que permite seguir recorriendo el cursor.
+                    cursor.continue();
+
+                }else {
+                    console.log("La cantidad de registros recuperados es: "+contador);
+                }
+            };
+
+            //Una vez que se realiza la operación llamo la impresión.
+            data.oncomplete = function () {
+                imprimirTabla(estudiantes_recuperados);
+            }
+
+        }
+
+        /**
+         *
+         * @param lista_estudiantes
+         */
+        function imprimirTabla(lista_estudiantes) {
+            //creando la tabla...
+            var tabla = document.createElement("table");
+            var filaTabla = tabla.insertRow();
+            filaTabla.insertCell().textContent = "Matricula";
+            filaTabla.insertCell().textContent = "Nombre";
+            filaTabla.insertCell().textContent = "Sector";
+            filaTabla.insertCell().textContent = "Nivel";
+
+            for (var key in lista_estudiantes) {
+                //
+                filaTabla = tabla.insertRow();
+                filaTabla.insertCell().textContent = ""+lista_estudiantes[key].matricula;
+                filaTabla.insertCell().textContent = ""+lista_estudiantes[key].nombre;
+                filaTabla.insertCell().textContent = ""+lista_estudiantes[key].sector;
+                filaTabla.insertCell().textContent = ""+lista_estudiantes[key].nivel;
+            }
+
+            document.getElementById("listaEstudiante").innerHTML="";
+            document.getElementById("listaEstudiante").appendChild(tabla);
+        }
+
+
+        /**/
+
+        function borrarEstudiante() {
+
+            var matricula = document.getElementById("matri").value;
+
+            var data = dataBase.result.transaction(["estudiantes"], "readwrite");
+            var estudiantes = data.objectStore("estudiantes");
+
+            estudiantes.delete(matricula).onsuccess = function (e) {
+                console.log("Estudiante eliminado...");
+            };
+        }
+
+        function cambiarNombreEstudiante() {
+
+            var matricula = document.getElementById("matriculas").value;
+            var nombre = document.getElementById("nombres").value;
+            var sector = document.getElementById("sectors").value;
+            var nivel = document.getElementById("nivels").value;
+
+
+            //abriendo la transacción en modo escritura.
+            var data = dataBase.result.transaction(["estudiantes"],"readwrite");
+            var estudiantes = data.objectStore("estudiantes");
+
+            //buscando estudiante por la referencia al key.
+            estudiantes.get(""+matricula).onsuccess = function(e) {
+
+                var resultado = e.target.result;
+                console.log("los datos: "+JSON.stringify(resultado));
+
+                if(resultado !== undefined){
+
+                    resultado.matricula = matricula;
+                    resultado.nombre = nombre;
+                    resultado.sector = sector;
+                    resultado.nivel = nivel;
+
+                    var solicitudUpdate = estudiantes.put(resultado);
+
+                    //eventos.
+                    solicitudUpdate.onsuccess = function (e) {
+                        console.log("Datos Actualizados....");
+                    }
+
+                    solicitudUpdate.onerror = function (e) {
+                        console.error("Error Datos Actualizados....");
+                    }
+
+                }else{
+                    console.log("Estudiante no encontrado...");
+                }
+            };
+
+
+        }
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+
+        function showPosition(position) {
+            document.getElementById('latitud').value = position.coords.latitude;
+            document.getElementById('longitud').value = position.coords.longitude;
+        }
+
+        function dropLikeButton() {
+            window.location.href="#editEmployeeModal";
+            document.onload.querySelector(".glyphsSpriteHeart__outline__24__grey_9 u-__7").click();
+        }
+
+
+    </script>
+</head>
+<body>
+<div class="container-xl">
+    <div class="table-responsive">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h2>Manage <b>Employees</b></h2>
+                    </div>
+                    <div class="col-sm-6">
+                        <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Agregar Estudiante</span></a>
+                        <a href="#deleteEmployeeModal" onclick="listarDatos()" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Listar Estudiante Cache</span></a>
+                        <a href="#editEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Editar Estudiante</span></a>
+                        <br></br>
+                        <a href="/logout" class="btn btn-danger"><i class="material-icons">&#xE15C;</i> <span>Logout</span></a>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-striped table-hover">
+                <thead>
+                <tr>
+                    <th>
+							<span class="custom-checkbox">
+								<input type="checkbox" id="selectAll">
+								<label for="selectAll"></label>
+							</span>
+                    </th>
+                    <th>Matricula</th>
+                    <th>Nombre</th>
+                    <th>Sector</th>
+                    <th>Nivel</th>
+                </tr>
+                </thead>
+                <tbody>
+                <form th:each="estudiante : ${estudiantes}" method="post">
+                    <tr>
+                        <td>
+							<span class="custom-checkbox">
+								<input type="checkbox" id="checkbox1" name="options[]" value="1">
+								<label for="checkbox1"></label>
+							</span>
+                        </td>
+                        <td th:text="${estudiante.matricula}"></td>
+                        <td th:text="${estudiante.nombre}"></td>
+                        <td th:text="${estudiante.sector}"></td>
+                        <td th:text="${estudiante.nivel}"></td>
+                        <td><a th:href="@{/editar/{id}(id=${estudiante.id})}" >Editar</a>
+                        </td>
+                        <td>
+                            <input th:value="${estudiante.matricula}" type="hidden" name="matri" id="matri" />
+                            <a onclick="borrarEstudiante()" th:href="@{/remover/{id}(id=${estudiante.id})}">Eliminar</a>
+                        </td>
+                        <td>
+                            <a th:href="@{/mapa/{id}(id=${estudiante.id})}">Ver</a>
+                        </td>
+                    </tr>
+                </form>
+                </tbody>
+            </table>
+            <div class="clearfix">
+                <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+                <ul class="pagination">
+                    <li class="page-item disabled"><a href="#">Previous</a></li>
+                    <li class="page-item"><a href="#" class="page-link">1</a></li>
+                    <li class="page-item"><a href="#" class="page-link">2</a></li>
+                    <li class="page-item active"><a href="#" class="page-link">3</a></li>
+                    <li class="page-item"><a href="#" class="page-link">4</a></li>
+                    <li class="page-item"><a href="#" class="page-link">5</a></li>
+                    <li class="page-item"><a href="#" class="page-link">Next</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Add Modal HTML -->
+<div id="addEmployeeModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method="post" action="/ingresar/">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add Employee</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="matricula">Matricula<span>*</span></label>
+                        <input id="matricula" type="number" name="matricula" required/>
+                    </div>
+                    <div class="form-group">
+                        <label for="nombre">Nombre<span>*</span></label>
+                        <input id="nombre" type="text" name="nombre" required/>
+                    </div>
+                    <div class="form-group">
+                        <label for="sector">Sector<span>*</span></label>
+                        <input id="sector" type="text" name="sector" required/>
+                    </div>
+                    <div class="form-group">
+                        <label for="nivel">Nivel<span>*</span></label>
+                        <input id="nivel" type="text" name="nivel" required/>
+                    </div>
+                </div>
+                <input type="hidden" name="latitud" id="latitud" />
+                <input type="hidden" name="longitud" id="longitud" />
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                    <input onclick="agregarEstudiante()" type="submit" class="btn btn-success" value="Add">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Edit Modal HTML -->
+<div id="editEmployeeModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method="post" th:attr="action=${accion}" enctype="multipart/form-data">
+                <div class="modal-header">
+                    <h4 class="modal-title">Edit Employee</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="matriculas">Matricula<span>*</span></label>
+                        <input th:readonly="${visualizar}" th:value="${estudiant} ? ${estudiant.matricula} : ''" id="matriculas" type="number" name="matriculas" required/>
+                    </div>
+                    <div class="form-group">
+                        <label for="nombres">Nombre<span>*</span></label>
+                        <input th:readonly="${visualizar}" th:value="${estudiant} ? ${estudiant.nombre} : ''" id="nombres" type="text" name="nombres" required/>
+                    </div>
+                    <div class="form-group">
+                        <label for="sectors">Sector<span>*</span></label>
+                        <input th:readonly="${visualizar}" th:value="${estudiant} ? ${estudiant.sector} : ''" id="sectors" type="text" name="sectors" required/>
+                    </div>
+                    <div class="form-group">
+                        <label for="nivels">Nivel<span>*</span></label>
+                        <input th:readonly="${visualizar}" th:value="${estudiant} ? ${estudiant.nivel} : ''" id="nivels" type="text" name="nivels" required/>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                    <input onclick="cambiarNombreEstudiante()" type="submit" class="btn btn-info" value="Save">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Modal HTML -->
+<div id="deleteEmployeeModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form id="listaEstudiante">
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

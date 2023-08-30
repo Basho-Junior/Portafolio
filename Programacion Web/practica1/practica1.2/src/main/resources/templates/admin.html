@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/sticky-footer-navbar.css">
+    <script src="/js/bootstrap.min.js.map"></script>
+    <script src="/js/jquery-3.6.0.min.js"></script>
+    <title>Administración</title>
+</head>
+
+<body>
+    <header>
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <a class="navbar-brand" href="#">Práctica 1.1</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Inicio</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Administrador<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/proyecto/">Proyectos</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="/endpoint">Configurar Endpoint</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/perform_logout">Cerrar Sesión</a>
+                    </li>
+                </ul>
+                <!--
+      <form class="form-inline mt-2 mt-md-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>-->
+            </div>
+        </nav>
+
+    </header>
+    <!-- Begin page content -->
+    <main role="main" class="container">
+        <div class="container-fluid">
+            <hr>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header card-header-primary">
+                            <h4 class="card-title">Administración de Usuarios</h4>
+                            <!-- <p class="card-category"></p> -->
+                        </div>
+                        <div class="card-body">
+                            <!--Crear usuario-->
+                            <div th:unless="${modificar}" class="container">
+                                <!-- Comprobar clave en caso de que se suba normalmente-->
+                                <h3 style="text-align: center;">Crear usuario</h3>
+                                <hr>
+                                <form action="/crearusuario" method="POST" onsubmit="return verificarClave()">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Username</label>
+                                                <input id="username" name="username" type="text" class="form-control" minlength="3" maxlength="16" pattern="^[a-zA-Z]*" placeholder="Ingrese nombre de usuario" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Nombre</label>
+                                                <input id="nombre" name="nombre" type="text" class="form-control" minlength="3" maxlength="16" pattern="^[a-zA-Z]*" placeholder="Ingrese su nombre" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Rol: </label>
+                                                <select id="rol" name="rol" class="form-control">
+                                                    <option value="ROLE_USER" selected>Usuario</option>
+                                                    <option value="ROLE_ADMIN">Administrador</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Contraseña</label>
+                                                <input id="password" name="password" type="password" class="form-control" minlength="3" maxlength="16" placeholder="Ingrese la clave" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Confirmar contraseña</label>
+                                                <input id="password2" name="password2" type="password" class="form-control" minlength="3" maxlength="16" placeholder="Volver a ingresar" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input id="submit" name="submit" type="submit" value="Crear usuario" class="btn btn-secondary float-right">
+                                    <div class="clearfix"></div>
+                                </form>
+                            </div>
+                            <div th:if="${modificar}" class="container">
+                                <!-- Comprobar clave en caso de que se suba normalmente-->
+                                <h3 style="text-align: center;">Modificar usuario</h3>
+                                <hr>
+                                <form action="/modificarusuario" method="POST" onsubmit="return verificarClave()">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Nombre de usuario</label>
+                                                <input id="username" name="username" type="text" th:value="${modificar.username}" class="form-control" minlength="3" maxlength="16" pattern="^[a-zA-Z]*" placeholder="Ingrese nombre de usuario" readonly required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Nombre</label>
+                                                <input id="nombre" name="nombre" th:value="${modificar.nombre}" type="text" class="form-control" minlength="3" maxlength="16" pattern="^[a-zA-Z]*" placeholder="Ingrese su nombre" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Rol: </label>
+                                                <select id="rol" name="rol" class="form-control">
+                                                    <option value="ROLE_USER" selected>Usuario</option>
+                                                    <option value="ROLE_ADMIN">Administrador</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Contraseña</label>
+                                                <input id="password" name="password" type="password" class="form-control" minlength="3" maxlength="16" placeholder="Ingrese la clave" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">Confirmar contraseña</label>
+                                                <input id="password2" name="password2" type="password" class="form-control" minlength="3" maxlength="16" placeholder="Volver a ingresar" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input id="submit" name="submit" type="submit" value="Modificar usuario" class="btn btn-secondary float-right">
+                                    <div class="clearfix"></div>
+                                </form>
+                            </div>
+                            <br>
+                            <hr>
+                            <!--Tabla de todos los usuarios-->
+                            <div class="content" th:if="${misUsuarios}">
+                                <!--Acortadores registrados-->
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead class=" text-primary">
+                                            <th class="col-md-3">
+                                                Username
+                                            </th>
+                                            <!--Si no es admin-->
+                                            <th class="col-md-3">
+                                                Nombre
+                                            </th>
+                                            <th class="col-md-3">
+                                                Rol
+                                            </th>
+                                            <th class="col-md-3">
+                                                Acción
+                                            </th>
+                                        </thead>
+                                        <tbody>
+                                            <tr th:each="usuario : ${misUsuarios}">
+                                                <form action="/eliminarusuario" method="POST">
+                                                    <td th:text="${usuario.username}">
+                                                        0
+                                                    </td>
+                                                    <td th:text="${usuario.nombre}">
+                                                        Username
+                                                    </td>
+                                                    <td th:text="${usuario.rol}">
+                                                        ROLE_USER
+                                                    </td>
+                                                    <td>
+                                                        <!--Colocar ID de acortador-->
+                                                        <input th:value="${usuario.username}" id="username" name="username" type="hidden" class="form-control" readonly required>
+                                                        <input th:unless="${usernameActual != 'admin' and usuario.rol == 'ROLE_ADMIN' and usernameActual != usuario.username}" type="submit" formaction="/modificar" value="Modificar" class="btn btn-primary">
+                                                        <input th:unless="${usernameActual == usuario.username or usuario.username == 'admin'}" type="submit" title="Advertencia: esta acción eliminará los proyectos asociados a este usuario y sus endpoint." value="Eliminar" class="btn btn-danger">
+                                                    </td>
+                                                </form>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="container text-center ">
+            <script>
+                document.write(new Date().getFullYear())
+            </script>,
+            <a class="text-reset fw-bold " href="https://github.com/Audric1Rosario/ProgramacionWebAvanzada">Audric y Zhen</a>
+        </div>
+    </footer>
+</body>
+
+<script>
+    function verificarClave() {
+        var clave = document.getElementById("password").value;
+        var confirmar = document.getElementById("password2").value;
+        //alert("" + clave + " " + confirmar);
+        if (clave != confirmar) {
+            alert("Las claves no coinciden, verifique la contraseña del nuevo usuario.");
+        }
+        return clave == confirmar;
+    }
+</script>
+
+<script th:if="${modificar}">
+    function cargarSelect() {
+        var rol = "[[${modificar.rol}]]";
+        var selectRol = document.getElementById('rol');
+        selectRol.value = rol;
+    }
+    $(document).ready(function() {
+        cargarSelect();
+    });
+</script>
+
+</html>

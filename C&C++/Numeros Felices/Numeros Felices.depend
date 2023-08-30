@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1570849098 source:c:\users\junior\desktop\proyectosc\numeros felices\main.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+

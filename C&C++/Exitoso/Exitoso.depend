@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1570473341 source:c:\users\junior\desktop\proyectosc\exitoso\main.c
+	<stdio.h>
+	<stdlib.h>
+

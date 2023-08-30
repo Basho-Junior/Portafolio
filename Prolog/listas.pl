@@ -1,0 +1,16 @@
+%miembro(X,[X|_]).
+%miembro(X, [_|Y]):- miembro(X,Y).
+
+penultimo[X,_], X).
+penultimo([_|T], X) :- penultimo(T, X).
+
+quitar( _, [], []).
+quitar( R, [R|T], T2) :- quitar( R, T, T2).
+quitar( R, [H|T], [H|T2]) :- H \= R, quitar( R, T, T2).
+
+inverso([], Y, R):- R = Y.
+inverso([H|T] , Y, R) :- inverso(T, [H|Y], R).
+
+longitud(Xs,L) :- longitud(Xs,0,L) .
+longitud([], L, L) .
+longitud( [_|Xs], T, L) :- T1 is T+1, longitud(Xs,T1,L).

@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+package enlacern;
+
+message usuarioRequest{
+  string usuario = 1;
+  string contrasenia = 2;
+}
+
+message usuarioResponse{
+  bool okey = 1;
+}
+
+message linkRequest{
+  string enlace = 1;
+  string usuario = 2;
+}
+
+message linkResponse{
+  int32 eid = 1;
+  string url = 2;
+  string fecha = 3;
+  string acortado = 4;
+  int32 visitas = 5;
+  string foto = 6;
+
+}
+message enlace{
+  string user = 1;
+}
+
+message listaLink{
+  repeated linkResponse enlace = 1;
+}
+
+message visitantesRequest{
+  int32 ide = 1;
+}
+
+message visitante{
+  string fecha =1;
+  string ipaddress = 2;
+  string navegador = 3;
+  string sistema =4;
+
+}
+message visitanteReponse{
+  repeated visitante visitantes = 1;
+}
+service EnlaceRn{
+  rpc autentificacion(usuarioRequest) returns (usuarioResponse);
+  rpc makeLink(linkRequest) returns (linkResponse);
+  rpc getLink(visitantesRequest) returns (linkResponse);
+  rpc getLinks(enlace) returns (listaLink);
+  rpc getVisitantes(visitantesRequest) returns (visitanteReponse);
+}

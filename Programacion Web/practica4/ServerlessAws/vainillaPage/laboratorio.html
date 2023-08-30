@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Práctica 4</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="fonts/ionicons.min.css">
+    <link rel="stylesheet" href="css/styles.min.css">
+    <!--Extra-->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <!--Special-->
+    <script src="js/jquery.easing.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-lg navigation-clean">
+        <div class="container"><a class="navbar-brand" href="index.html"><img src="img/PUCMM.png" style="height: 20%;   width: 20%;"></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#">Laboratorios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="reservas.html">Reservar</a></li>
+                    <li class="nav-item"><a class="nav-link" href="pasados.html">Registros</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="card">
+        <div class="card-body">
+            <h4 class="text-center card-title">Laboratorios Disponibles</h4>
+            <form onsubmit="return agregarLaboratorio();">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <label class="form-label">Laboratorio</label>
+                            <input class="form-control" type="text" id="laboratorio" name="laboratorio">
+                        </div>
+                        <div class="col-md-4 col-lg-5">
+                            <label class="form-label">Espacios</label>
+                            <input class="form-control" type="number" id="cantidad" name="cantidad" min="1" max="10">
+                        </div>
+                        <div class="col-auto col-md-4 col-lg-2 align-self-end"><button class="btn btn-secondary text-center" type="submit">Agregar</button></div>
+                    </div>
+                </div>
+            </form>
+            <div class="table-responsive">
+                <table id="tablaLaboratorios" class="table">
+                    <thead>
+                        <tr>
+                            <th class="col-md-3">ID</th>
+                            <th class="col-md-3">Laboratorio</th>
+                            <th class="col-md-3">Espacios</th>
+                            <th class="col-md-3">Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>0</td>
+                            <td>ITT</td>
+                            <td>7</td>
+                            <td>
+                                <form method="POST" action="/eliminarlaboratorio">
+                                    <input type="hidden" id="id" name="id">
+                                    <input type="submit" value="Eliminar" class="btn btn-danger">
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <footer class="footer-basic">
+        <div class="social"><a href="https://github.com/Audric1Rosario/ProgramacionWebAvanzada"><i class="icon ion-social-github"></i></a></div>
+        <p class="copyright">Zheng y Audric © 2021</p>
+    </footer>
+    <script src="js/bootstrap.min.js"></script>
+</body>
+
+<script>
+    $( document ).ready(function() {
+        console.log( "ready!" );
+        // Obtener referencia de la tabla.
+        tablaLaboratorios = $("#tablaLaboratorios");
+        // Primero vaciar las filas...
+        tablaLaboratorios.find('tbody').empty();
+        setTimeout(cargarListadoLaboratorios, 250);
+    });
+
+    var tablaLaboratorios;
+
+    function cargarListadoLaboratorios(){
+        console.log("Consultando listado de laboratorios");
+        var settings = {
+            'cache': false,
+            "url": _config.api.invokeUrlb,
+            "method": "GET"
+        };
+        $.ajax(settings).done(function(response) {
+            console.log(response);
+            tablaLaboratorios.find('tbody').empty();
+            var arreglo = response.data.laboratorios;
+            if (arreglo.length > 0) {
+                for (var i = 0; i < arreglo.length; i++) {
+                    tablaLaboratorios.find('tbody').append("<tr><td>"+arreglo[i].id+"</td>" +
+                        "<td>"+arreglo[i].nombre+"</td>" +
+                        "<td>"+arreglo[i].cantidadMaxima+"</td>" +
+                        "<td><form action='#' onsubmit='return eliminarLaboratorio(\"" + arreglo[i].id + "\")'>" +
+                        "<input type='submit' value='Eliminar' class='btn btn-danger'></form></td></tr>");
+                }
+            }
+        }).fail(function ajaxError(jqXHR, textStatus, errorThrown) {
+            manejoErrores(jqXHR, textStatus, errorThrown) });
+    }
+
+    function eliminarLaboratorio(idLaboratorio) {
+        console.log("Eliminando " + idLaboratorio);
+        $.ajax({
+            method: 'DELETE',
+            contentType: 'application/json',
+            url: _config.api.invokeUrlb,
+            data: JSON.stringify({
+                id: idLaboratorio
+            }),
+            success: function(resultado) {
+                console.log(JSON.stringify(resultado));
+                cargarListadoLaboratorios();
+            },
+            error: function ajaxError(jqXHR, textStatus, errorThrown) {
+                manejoErrores(jqXHR, textStatus, errorThrown);
+            }
+        });
+        return false;
+    }
+
+    function agregarLaboratorio() {
+        var nombreLab = $("#laboratorio").val();
+        var cantidad = $("#cantidad").val();
+
+        alert(nombreLab + " " + cantidad);
+        if (nombreLab != '') {
+            if (cantidad != '') {
+                // Proceder a agregar laboratorio.
+                $.ajax({
+                    method: 'POST',
+                    contentType: 'application/json',
+                    url: _config.api.invokeUrlb,
+                    data: JSON.stringify({
+                        nombre: nombreLab,
+                        cantidadMaxima: cantidad
+                    }),
+                    success: function(resultado) {
+                        console.log(JSON.stringify(resultado));
+                        cargarListadoLaboratorios();
+                    },
+                    error: function ajaxError(jqXHR, textStatus, errorThrown) {
+                        manejoErrores(jqXHR, textStatus, errorThrown);
+                    }
+                });
+            } else {
+                alert("Por favor llene todos los campos.");
+            }
+        } else {
+            alert("Por favor llene todos los campos.");
+        }
+        // Vaciar los campos.
+        $("#laboratorio").val("");
+        $("#cantidad").val("");
+        return false;
+    }
+
+    function manejoErrores(jqXHR, textStatus, errorThrown) {
+        console.error('Error procesando la consulta: ', textStatus, ', Detalle: ', errorThrown);
+        console.error('Respuesta: ', jqXHR.responseText);
+        alert('Ocurrio un error en la consulta:\n' + jqXHR.responseText);
+    }
+</script>
+</html>

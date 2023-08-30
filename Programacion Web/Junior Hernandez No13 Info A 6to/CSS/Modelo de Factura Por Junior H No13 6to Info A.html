@@ -1,0 +1,167 @@
+<html>
+    <head>
+        <style>
+        .p{
+            
+        }
+        #yo{
+            margin-top:-2px;
+            float:left;
+            margin-left:780px
+        }
+        #tu{
+            margin-top:-2px;
+            margin-right:320px
+        }
+        #bot{
+            background-color: rgb(109, 122, 231);
+            border: solid rgb(0, 0, 0) 1px;
+            transition: all .5s;
+            margin-left:400px;
+            padding-right:40px;
+            padding-left: 40px;
+            margin-top:5px;
+        }
+        #bot:hover {
+	        background-color: rgb(91, 101, 192);
+        }
+        #tito{
+            background-color: rgb(238, 188, 51);
+            border: solid rgb(0, 0, 0) 1px;
+            width: 700px;
+        }
+        </style>
+        <script>
+               function calculando(){
+                var t1 = document.getElementById("v0").value;
+                var t2 = document.getElementById("v1").value;
+                var t3 = t1*t2;
+                document.getElementById("v3").value="RD$"+t3;
+                
+
+                var t4 = document.getElementById("v4").value;
+                var t5 = document.getElementById("v5").value;
+                var t6 = t4*t5;
+                document.getElementById("v7").value="RD$"+t6;
+                
+                var t8 = document.getElementById("v8").value;
+                var t9 = document.getElementById("v9").value;
+                var t11 = t8*t9;
+                document.getElementById("v11").value="RD$"+t11;
+            
+                
+                var t12 = document.getElementById("v12").value;
+                var t13 = document.getElementById("v13").value;
+                var t15 = t12*t13;
+                document.getElementById("v15").value="RD$"+t15;
+                
+                var t16 = document.getElementById("v16").value;
+                var t17 = document.getElementById("v17").value;
+                var t19 = t16*t17;
+                document.getElementById("v19").value="RD$"+t19;
+
+                var t20 = document.getElementById("v20").value;
+                var t21 = document.getElementById("v21").value;
+                var t23 = t20*t21;
+                document.getElementById("v23").value="RD$"+t23;
+               
+                var t24 = document.getElementById("v24").value;
+                var t25 = document.getElementById("v25").value;
+                var t27 = t24*t25;
+                document.getElementById("v27").value="RD$"+t27;
+                
+                var sum = t3+t6+t11+t15+t19+t23+t27;
+                document.getElementById("v28").value="RD$"+sum;
+
+                var it = parseFloat(sum*0.18);
+                document.getElementById("v29").value="RD$"+it;
+                
+                var total = parseFloat(sum+it);
+                document.getElementById("v30").value="RD$"+total;
+                
+                }
+
+
+        </script>
+        <center>
+        <h2 id= "tito">Modelo de Factura</h2>
+        <body>
+            <div>
+                <table border cellpadding="0" cellspacing="0">
+                    <tr>
+                        <th>Cantidad</th>
+                        <th>Precio</th>
+                        <th>Descripcion</th>
+                        <th>Monto</th>
+                    </tr>
+                    <tr>
+                        <td><input type="number" id="v0"></td>
+                        <td><input type="number" id="v1"></td>
+                        <td><input type="text" id="v2"></td>
+                        <td><input type="text" id="v3" disabled></td>
+                    </tr>
+                    <tr>
+                        <td><input type="number" id="v4"></td>
+                        <td><input type="number" id="v5"></td>
+                        <td><input type="text" id="v6"></td>
+                        <td><input type="text" id="v7" disabled></td>
+                    </tr>
+                    <tr>
+                        <td><input type="number" id="v8"></td>
+                        <td><input type="number" id="v9"></td>
+                        <td><input type="text" id="v10"></td>
+                        <td><input type="text" id="v11" disabled></td>
+                    </tr>
+                    <tr>
+                        <td><input type="number" id="v12"></td>
+                        <td><input type="number" id="v13"></td>
+                        <td><input type="text" id="v14"></td>
+                        <td><input type="text" id="v15" disabled></td>
+                    </tr>
+                    <tr>
+                        <td><input type="number" id="v16"></td>
+                        <td><input type="number" id="v17"></td>
+                        <td id="v18"><input type="text" id="v0"></td>
+                        <td><input type="text" id="v19" disabled></td>
+                    </tr>
+                    <tr>
+                        <td><input type="number" id="v20"></td>
+                        <td><input type="number" id="v21"></td>
+                        <td><input type="text" id="v22"></td>
+                        <td><input type="text" id="v23" disabled></td>
+                    </tr>
+                    <tr>
+                        <td><input type="number" id="v24"></td>
+                        <td><input type="number" id="v25"></td>
+                        <td><input type="text" id="v26"></td>
+                        <td><input type="text" id="v27" disabled></td>
+                    </tr>
+                </table>
+                <table id = "yo">
+                        <tr>
+                            <td id="q1">Sub-total:</td>
+                        </tr>
+                        <tr>
+                            <td id="q2">Itbis:</td>
+                        </tr>
+                        <tr>
+                            <td id="q3">Total:</td>
+                        </tr>
+                    </table>
+                <table id="tu" border cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td><input type="text" id="v28" disabled></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" id="v29" disabled></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" id="v30" disabled></td>
+                    </tr>
+                </table>
+            </div>
+            <input onclick=calculando() type="button" id = "bot"value = Calcular>
+        </body>
+    </center>
+    </head>
+</html>

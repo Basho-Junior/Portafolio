@@ -1,0 +1,181 @@
+:-dynamic cierto/1.
+:-dynamic falso/1.
+
+/* animal.pro
+  animal identification game.
+
+    start with ?- go.     */
+
+go :- hypothesize(Criatura),
+      write('I guess that the animal is: '),
+      write(Criatura),
+      nl,
+      undo.
+
+/* hypotheses to be tested */
+hypothesize(duende)    :- duende, !.
+hypothesize(hada)      :- hada, !.
+hypothesize(fauno)     :- fauno, !.
+hypothesize(minotauro) :- minotauro, !.
+hypothesize(centauro)  :- centauro, !.
+hypothesize(ciclope)   :- ciclope, !.
+hypothesize(gorgona)   :- gorgona, !.
+hypothesize(sirena)    :- sirena, !.
+hypothesize(cecaelia)  :- cecaelia, !.
+hypothesize(fenix)     :- fenix, !.
+hypothesize(dragon)    :- dragon, !.
+hypothesize(grifo)     :- grifo, !.
+hypothesize(pegaso)    :- pegaso, !.
+hypothesize(unknown).             /* no diagnosis */
+
+/* animal identification rules */
+duende :-  verify(tiene_part)
+           camina,
+           ubicado,
+           tamanio,
+           omnibora,
+           verify(hacer_travesuras).
+
+hada   :- camina,
+          ubicado,
+          tamanio,
+          vuela,
+          hervibora,
+          pacifica,
+          verify(poder_cantar).
+
+fauno  :-  camina,
+           ubicado,
+           tamanio,
+           omnibora,
+           pacifica,
+           verify(tener_cuernos).
+
+minotauro :- camina,
+             tamanio,
+             omnibora,
+             guerrera,
+             verify(tener_cuernos).
+
+ciclope   :- camina,
+             tamanio,
+             carnivora,
+             guerrera.
+
+gorgona    :- camina,
+             tamanio,
+             omnibora,
+             verify(ser_venenosa).
+
+centauro :- camina,
+            tamanio,
+            omnibora,
+            guerrera,
+            verify(tener_pezunias).
+
+pegaso   :-camina,
+           tamanio,
+           hervibora,
+           vuela,
+           verify(tener_pezunias).
+
+grifo :-     camina,
+             tamanio,
+             omnibora,
+             vuela,
+             verify(tener_garras).
+
+sirena :-    tamanio,
+             ubicado,
+             omnibora,
+             verify(poder_cantar).
+
+cecaelia :-  tamanio,
+             ubicado,
+             omnibora.
+
+dragon :-    camina,
+             tamanio,
+             carnivora,
+             vuela,
+             verify(usar_fuego).
+
+fenix :-     camina,
+             tamanio,
+             omnibora,
+             vuela,
+             verify(usar_fuego).
+
+
+
+
+/* classification rules */
+camina    :- verify(ser_bipeda), !.
+camina    :- verify(ser_cuadrupeda).
+
+ubicado   :- verify(vivir_en_bosques), !.
+ubicado   :- verify(vivir_en_mares).
+
+carnivora :- verify(comer_humanos), !.
+carnivora :- verify(dientes_afilados),
+	     verify(comer_carne),
+             verify(tener_garras),
+             verify(ser_fuerte).
+
+vuela    :-verify(tener_alas),!.
+vuela    :-verify(ser_magico).
+
+hervibora :-verify(comer_plantas),!.
+hervibora :-verify(comer_frutas),
+            verify(comer_vegetales).
+
+omnibora :-verify(comer_todo),!.
+
+
+
+
+/* how to ask questions */
+ask(Question) :-
+    write('Tu criatura tiene la caracteristica de: '),
+    write(Question),
+    write('?(si/no) '),
+    read(Response),
+    nl,
+    ( (Response == si ; Response == s)
+      ->
+       assert(cierto(Question)) ;
+       assert(falso(Question)), fail).
+
+
+/* How to verify something */
+verify(S) :-
+   (cierto(S)
+    ->
+    true ;
+    (falso(S)
+     ->
+     fail ;
+     ask(S))).
+
+/* undo all yes/no assertions */
+undo :- retract(cierto(_)),fail.
+undo :- retract(falso(_)),fail.
+undo.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

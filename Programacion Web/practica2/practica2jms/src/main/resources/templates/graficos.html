@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Practica2</title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="/css/styles.min.css">
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/jquery/jquery.min.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-lg navigation-clean-button">
+        <div class="container"><a class="navbar-brand" href="#">Práctica 2</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="/">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/clientes">Clientes</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#">Gráficos</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="card">
+        <div class="card-body">
+            <h4 class="text-center card-title">Temperatura</h4>
+            <h6 class="text-muted card-subtitle mb-2">Por favor, espere 10 segundos antes de que se pueda visualizar el gráfico</h6>
+            <div id='chart_div1' style='width: 900px; height: 600px;'></div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h4 class="text-center card-title">Humedad</h4>
+            <h6 class="text-muted card-subtitle mb-2">Por favor, espere 10 segundos antes de que se pueda visualizar el gráfico</h6>
+            <div id='chart_div2' style='width: 900px; height: 600px;'></div>
+        </div>
+    </div>
+    <footer class="footer-basic">
+        <div class="social"><a href="https://github.com/Audric1Rosario/ProgramacionWebAvanzada/tree/main/practica2jms"><i class="icon ion-social-github" style="background: url(&quot;https://cdn.bootstrapstudio.io/placeholders/1400x800.png&quot;);"></i></a></div>
+        <p class="copyright">Audric y Zheng © 2021</p>
+    </footer>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/js/chart.min.js"></script>
+    <script src="/js/script.min.js"></script>
+</body>
+
+<script src="https://www.gstatic.com/charts/loader.js" type="text/javascript"></script>
+<script type="text/javascript">
+    var stompClient = null;
+    var info = null;
+    var modificable = null;
+    var tempArray = null;
+    var humeArray = null;
+    var num = null;
+    // Trabajar con web sockets
+    function connected() {
+        // Definir Socket
+        var socket = new SockJS('/graficos-websocket');
+        // Conectarse al socket
+        stompClient = Stomp.over(socket);
+        stompClient.connect({}, function (frame) {
+            //setConnected(true);
+            //console.log('Connected: ' + frame);
+            stompClient.subscribe('/topic/graficos', function (greeting) {
+                loadData(greeting.body);
+                //alert(greeting.body);
+            });
+        });
+    }
+
+    function loadData(message) {
+        info = JSON.parse(message);
+        info.forEach((item, index, arr) => {
+            var temp = arr[index].fechaGeneracion;
+            arr[index].fechaGeneracion = new Date(temp);
+        });
+        if (info != [] && info != null) {
+            num = info[0].clientesActuales;
+            var nuevaLista = [];
+            for (let i = 0; i < info.length;) {
+                var subLista = [];
+                for (let j = 0; j < num; j++) {
+                    if (j == 0) {
+                        subLista.push(info[i].fechaGeneracion);
+                    }
+                    subLista.push(info[i].temperatura);
+                    i++;
+                }
+                nuevaLista.push(subLista);
+            }
+            tempArray = nuevaLista;
+            nuevaLista = [];
+            for (let i = 0; i < info.length;) {
+                var subLista = [];
+                for (let j = 0; j < num; j++) {
+                    if (j == 0) {
+                        subLista.push(info[i].fechaGeneracion);
+                    }
+                    subLista.push(info[i].humedad);
+                    i++;
+                }
+                nuevaLista.push(subLista);
+            }
+            humeArray = nuevaLista;
+        }
+        updateChart();
+    }
+
+    function updateChart() {
+        if (modificable != null) {
+            drawChart();
+        }
+    }
+
+    $(document).ready(function () {
+        // Conectar al web socket.
+        connected();
+        setTimeout(drawChart, 10000);   // Esperar por 10 segundos
+    });
+    /* // Como siempre estara conectado, no sera necesario esto
+    function disconnect() {
+        if (stompClient !== null) {
+            stompClient.disconnect();
+        }
+        setConnected(false);
+        console.log("Disconnected");
+    }*/
+        google.charts.load('current', {'packages': ['annotationchart']});
+        //google.charts.setOnLoadCallback(drawChart);
+        var data = null;
+        var data1 = null;
+        var chart = null;
+        var chart1 = null;
+        var options = null;
+        var options1 = null;
+        function drawChart() {
+            data = new google.visualization.DataTable();
+            data.addColumn('date', 'Date');
+            // Del primer cliente tomar cantidad de clientes actuales.
+            for (let i = 0; i < num; i++) {
+                data.addColumn('number', 'Cliente '+i);
+            }
+            // Crear entrada.
+            var graphdata = tempArray;
+            /*var rows = Object.entries(graphdata);
+            rows.forEach(element => {
+                element[0] = new Date(element[0]);
+            });*/
+            data.addRows(graphdata);
+            chart = new google.visualization.AnnotationChart(document.getElementById('chart_div1'));
+            options = {
+                displayAnnotations: true,
+                min: 0
+            };
+            chart.draw(data, options);
+
+            data1 = new google.visualization.DataTable();
+            data1.addColumn('date', 'Date');
+            // Del primer cliente tomar cantidad de clientes actuales.
+            for (let i = 0; i < num; i++) {
+                data1.addColumn('number', 'Cliente '+i);
+            }
+            // Crear entrada.
+            var graphdata1 = humeArray;
+            /*var rows1 = Object.entries(graphdata1);
+            rows.forEach(element => {
+                element[0] = new Date(element[0]);
+            });*/
+            data1.addRows(graphdata1);
+            chart1 = new google.visualization.AnnotationChart(document.getElementById('chart_div2'));
+            options1 = {
+                displayAnnotations: true,
+                min: 0
+            };
+            chart1.draw(data1, options1);
+
+            // Luego de dibujar el gráfico, entonces, se pueden modificar sus datos.
+            modificable = true;
+        }
+</script>
+</html>

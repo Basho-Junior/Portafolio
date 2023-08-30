@@ -1,0 +1,61 @@
+#configuracion general de eureka
+eureka:
+  #  instance:
+  #    preferIpAddress: true
+  #    hostname: ${EUREKA_HOSTNAME:localhost}
+  client:
+    #    registerWithEureka: true
+    #    fetchRegistry: true
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+
+spring:
+  application:
+    name: GATEWAY-BALANCEADOR
+#para que use eureka
+  cloud:
+#    discovery:
+#      enabled: true
+    gateway:
+#      discovery:
+#        locator:
+#          enabled: true
+#          lower-case-service-id: true
+      #mi vida es mas facil con esto
+      #loadbalacing, que esta habilitado by default
+      #spring.cloud.loadbalancer.enabled=true
+      actuator:
+        verbose:
+           enabled: true
+      routes:
+        - id: ventas
+          uri: lb://MICROSERVICIO-VENTAS
+          predicates:
+            - Path=/api/ventas/**
+          filters:
+            - RewritePath=/api/ventas/(?<remaining>.*), /$\{remaining}
+            - name: Jwt
+              args:
+                routesRoles:
+                  - route: /cookies
+                    roles:
+                      - rol1
+                      - rol2
+
+        - id: usuarios
+          uri: lb://MICROSERVICIO-USUARIOS
+          predicates:
+            - Path=/api/auth/**
+          filters:
+            - RewritePath=/api/auth/(?<remaining>.*), /$\{remaining}
+#actuator things
+management:
+  endpoint:
+    gateway:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health,gateway
+server:
+  port: ${APPLICATION_PORT:8080}

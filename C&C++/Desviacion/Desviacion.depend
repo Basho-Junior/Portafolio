@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1570680553 source:c:\users\junior\desktop\proyectosc\desviacion\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.c>
+	<math.h>
+

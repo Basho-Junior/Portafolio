@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1569543980 source:c:\users\junior\desktop\proyectosc\alreves\main.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+

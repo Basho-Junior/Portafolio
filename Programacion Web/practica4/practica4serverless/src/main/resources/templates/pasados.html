@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Práctica 4</title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="/css/styles.min.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-lg navigation-clean">
+        <div class="container"><a class="navbar-brand" href="/"><img src="/img/PUCMM.png" style="height: 20%;   width: 20%;"></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/laboratorio">Laboratorios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/reservas">Reservar</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#">Registros</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="card">
+        <div class="card-body">
+            <h4 class="text-center card-title">Registros</h4>
+            <form method="POST" action="/buscarpasados">
+                <div class="container">
+                    <div class="row">
+                        <div class="col"><label class="form-label">Inicio</label>
+                            <input class="form-control" id="inicio" type="date" name="inicio" required>
+                        </div>
+                        <div class="col-md-4 col-lg-5"><label class="form-label">Fin</label>
+                            <input class="form-control" id="fin" type="date" name="fin" required>
+                        </div>
+                        <div class="col-auto col-md-4 col-lg-2 align-self-end"><button class="btn btn-secondary text-center" type="submit">Buscar</button></div>
+                    </div>
+                </div>
+            </form>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="col-md-2">ID</th>
+                            <th class="col-md-4">Nombre</th>
+                            <th class="col-md-3">Laboratorio</th>
+                            <th class="col-md-3">Fecha y Hora</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="reserva : ${reservas}">
+                            <td th:text="${reserva.idEstudiante}">0</td>
+                            <td th:text="${reserva.nombre}">Audric</td>
+                            <td th:text="${reserva.laboratorio}">ITT</td>
+                            <td th:text="${#dates.format(reserva.fecha, 'dd-MM-yyyy HH:mm')}">01/01/0001 10:00AM</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <footer class="footer-basic">
+        <div class="social"><a href="https://github.com/Audric1Rosario/ProgramacionWebAvanzada"><i class="icon ion-social-github"></i></a></div>
+        <p class="copyright">Zheng y Audric © 2021</p>
+    </footer>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>

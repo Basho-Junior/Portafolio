@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Práctica 4</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="fonts/ionicons.min.css">
+    <link rel="stylesheet" href="css/styles.min.css">
+    <!--Extra-->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <!--Special-->
+    <script src="js/jquery.easing.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-lg navigation-clean">
+        <div class="container"><a class="navbar-brand" href="index.html"><img src="img/PUCMM.png" style="height: 20%;   width: 20%;"></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="laboratorio.html">Laboratorios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="reservas.html">Reservar</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#">Registros</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="card">
+        <div class="card-body">
+            <h4 class="text-center card-title">Registros</h4>
+            <form onsubmit="return buscarPasados()">
+                <div class="container">
+                    <div class="row">
+                        <div class="col"><label class="form-label">Inicio</label>
+                            <input class="form-control" id="inicio" type="date" name="inicio" required>
+                        </div>
+                        <div class="col-md-4 col-lg-5"><label class="form-label">Fin</label>
+                            <input class="form-control" id="fin" type="date" name="fin" required>
+                        </div>
+                        <div class="col-auto col-md-4 col-lg-2 align-self-end">
+                            <input type="submit" value="Buscar" class="btn btn-secondary">
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="table-responsive">
+                <table id="tablaReservas" class="table">
+                    <thead>
+                        <tr>
+                            <th class="col-md-2">ID</th>
+                            <th class="col-md-4">Nombre</th>
+                            <th class="col-md-3">Laboratorio</th>
+                            <th class="col-md-3">Fecha y Hora</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>0</td>
+                            <td>Audric</td>
+                            <td>ITT</td>
+                            <td>01/01/0001 10:00AM</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <footer class="footer-basic">
+        <div class="social"><a href="https://github.com/Audric1Rosario/ProgramacionWebAvanzada"><i class="icon ion-social-github"></i></a></div>
+        <p class="copyright">Zheng y Audric © 2021</p>
+    </footer>
+    <script src="js/bootstrap.min.js"></script>
+</body>
+
+<script>
+    $(document).ready(function() {
+        console.log("ready!");
+        // Obtener referencia de la tabla.
+        tablaReservas = $("#tablaReservas");
+        // Primero vaciar las filas...
+        tablaReservas.find('tbody').empty();
+        setTimeout(cargarListadoReservas, 250);
+    });
+    var tablaReservas = null;
+    var misReservas = null;
+    // Listado de Reservas.
+    /**
+     * Función para cargar la información de las reservas
+     */
+    function cargarListadoReservas() {
+        console.log("Consultando listado de reservas");
+
+        var settings = {
+            'cache': false,
+            "url": _config.api.invokeUrl,
+            "method": "GET"
+        };
+        $.ajax(settings).done(function(response) {
+            console.log(response);
+            // Primero vaciar las filas...
+            tablaReservas.find('tbody').empty();
+            misReservas = Array.from(response.data.reservas);
+            var arreglo = filtrarListado(response.data.reservas);
+            // Luego llenarlas
+            if (arreglo.length > 0) {
+                for (var i = 0; i < arreglo.length; i++) {
+                    tablaReservas.find('tbody').append("<tr><td>" + arreglo[i].idEstudiante + "</td>" +
+                        "<td>" + arreglo[i].nombre + "</td>" +
+                        "<td>" + arreglo[i].laboratorio + "</td>" +
+                        "<td>" + arreglo[i].fecha + "</td></tr>");
+                }
+            }
+        }).fail(function ajaxError(jqXHR, textStatus, errorThrown) {
+            manejoErrores(jqXHR, textStatus, errorThrown)
+        });
+    }
+
+    function filtrarListado(listado) {
+        var nuevo = Array.from(listado);
+        var indicesEliminar = [];
+        // Iterar sobre el listado
+        for (var i = listado.length - 1; i >= 0; i--) {
+            // Esta vez solo mostrar los que son menores, ya que es un registro.
+            if (Date.parse(listado[i].fecha) >= Date.now()) {
+                nuevo.splice(i, 1);
+            }
+        }
+        // Enviar lista nueva (filtrada).
+        return nuevo;
+    }
+
+    function buscarPasados() {
+        if (camposVacios()) {
+            return false;
+        }
+        setTimeout(asyncBuscar, 100);
+        return false;
+    }
+
+    function asyncBuscar() {
+        // Simplemente volver a llenar la tabla de acuerdo al filtro ...
+        var fechaInicio = Date.parse($('#inicio').val());
+        var fechaFin = Date.parse($('#fin').val());
+        var listado = Array.from(misReservas);
+        for (var i = misReservas.length - 1; i >= 0; i--) {
+            // Sacar si es menor a la fecha actual.
+            if (Date.parse(misReservas[i].fecha) < fechaInicio ||
+                Date.parse(misReservas[i].fecha) > fechaFin) {
+                listado.splice(i, 1);
+            }
+        }
+
+        // Luego de hacer eso, colocar eso en la tabla.
+        // Primero vaciar las filas...
+        tablaReservas.find('tbody').empty();
+        // Luego llenarlas
+        if (listado.length > 0) {
+            for (var i = 0; i < listado.length; i++) {
+                tablaReservas.find('tbody').append("<tr><td>" + listado[i].idEstudiante + "</td>" +
+                    "<td>" + listado[i].nombre + "</td>" +
+                    "<td>" + listado[i].laboratorio + "</td>" +
+                    "<td>" + listado[i].fecha + "</td></tr>");
+            }
+        }
+    }
+
+    function camposVacios() {
+        if ($('#inicio').val() == '' || $('#fin').val() == '') {
+            return true;
+        }
+        // Sino entonces el problema es que el inicio es mayor que el fin..
+        if (Date.parse($('#inicio').val()) > Date.parse($('#fin').val())) {
+            alert("Por favor, coloca el inicio con una fecha menor al fin.")
+            return true;
+        }
+        return false;
+    }
+</script>
+</html>

@@ -1,0 +1,29 @@
+%conoce(juan,maria).
+%conoce(maria,jose).
+%conoce(jose,laura).
+%conoce(laura,ana).
+
+%habla(A,B):-conoce(A,B).
+%habla(A,C):-conoce(A,B),habla(B,C).
+
+
+
+%natural(0).
+%natural(s(X)):-natural(X).
+
+%natural(0).
+%natural(Y):- natural(X),Y is X + 1.
+
+
+%suma(0,X,X).
+%suma(X, Y, Z) :- suma(X2, Y, Z2),X is X2 + 1, Z is Z2 + 1.
+
+voy(mao,santiago).
+voy(bani,azua).
+voy(bani,san_juan).
+voy(santiago,bonao).
+voy(bonao, pedro_brand).
+voy(pedro_brand,santo_domingo).
+
+hay_ruta(LugarOrigen):- voy(LugarOrigen, santo_domingo).
+hay_ruta(LugarOrigen):- voy(LugarOrigen, Ruta), hay_ruta(Ruta).

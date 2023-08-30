@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Práctica 4</title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="/css/styles.min.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-lg navigation-clean">
+        <div class="container"><a class="navbar-brand" href="/"><img src="/img/PUCMM.png" style="height: 20%;   width: 20%;"></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/laboratorio">Laboratorios</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#">Reservar</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/pasados">Registros</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="card">
+        <div class="card-body">
+            <h4 class="text-center card-title">Crear Reservación</h4>
+            <form method="POST" action="/agregarreserva">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4 col-lg-2"></div>
+                        <div class="col-md-4 col-lg-8">
+                            <label class="form-label">ID Estudiantil</label>
+                            <input class="form-control" type="text" minlength="8" maxlength="8" id="idestudiante" pattern="[0-9]+" name="idestudiante" required>
+                            <label class="form-label">Nombre</label>
+                            <input class="form-control" type="text" id="nombre" name="nombre" required>
+                            <label class="form-label">Carrera</label>
+                            <input class="form-control" type="text" id="carrera" name="carrera" required>
+                            <label class="form-label">Laboratorio</label>
+                            <select class="form-select" id="lab" name="lab" required>
+                                <option th:each="laboratorio : ${laboratorios}" th:value="${laboratorio.nombre}" th:text="${laboratorio.nombre}"></option>
+                            </select>
+                            <label class="form-label">Fecha</label>
+                            <input class="form-control" id="fecha" type="date" name="fecha" required>
+                            <label class="form-label">Hora</label>
+                            <select class="form-select" id="hora" name="hora" required>
+                                <option value="8" selected>8:00 AM</option>
+                                <option value="9">9:00 AM</option>
+                                <option value="10">10:00 AM</option>
+                                <option value="11">11:00 AM</option>
+                                <option value="12">12:00 PM</option>
+                                <option value="13">1:00 PM</option>
+                                <option value="14">2:00 PM</option>
+                                <option value="15">3:00 PM</option>
+                                <option value="16">4:00 PM</option>
+                                <option value="17">5:00 PM</option>
+                                <option value="18">6:00 PM</option>
+                                <option value="19">7:00 PM</option>
+                                <option value="20">8:00 PM</option>
+                                <option value="21">9:00 PM</option>
+                            </select>
+                            <hr>
+                            <input type="submit" value="Reservar" class="btn btn-secondary">
+                        </div>
+                        <div class="col-md-4 col-lg-2" type="submit"></div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <footer class="footer-basic">
+        <div class="social"><a href="https://github.com/Audric1Rosario/ProgramacionWebAvanzada"><i class="icon ion-social-github"></i></a></div>
+        <p class="copyright">Zheng y Audric © 2021</p>
+    </footer>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>

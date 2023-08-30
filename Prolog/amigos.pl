@@ -1,0 +1,49 @@
+% genero/2: Hecho que permite especificar el genero de una persona.\
+% Se ha disenado de aridad 2 para que permita ser lo mas inclusivo\
+% posible en el futuro.\
+
+genero(beto,masculino).
+genero(willy,masculino).
+genero(caonabo,masculino).
+genero(haley,femenino).
+genero(mary,femenino).
+genero(yoli,femenino).
+
+%amigo/2 Hecho que especifica relacion de amistad entre personas\
+
+amigo(beto,willy).
+amigo(willy,caonabo).
+amigo(willy,haley).
+amigo(haley,mary).
+amigo(haley,yoli).
+
+%--------------------------------------------------------------\
+%Coloque aqui debajo sus reglas y expliquelas utilizando comentarios\
+%--------------------------------------------------------------\
+
+
+% 1) Regla que permite saber que persona tiene amigas
+%--------------------------------------------------------------\
+% Para esta regla se realiza una implementacion en la cual se evalua en
+% primer lugar si las dos personas ingresadas, o sea Persona1 y
+% Persona2 son amigo es decir utilizando la especificacion
+% de la relacion establecida con anterioridad, la Persona2
+% debe de cumplir que su genero sea femenino como se especifico
+% el genero de las personas mas arriba.
+% --------------------------------------------------------------\
+
+amigas(Persona1,Persona2):- amigo(Persona1,Persona2), genero(Persona2,femenino).
+
+% 2) Regla que permite saber que persona tiene amigos de su mismo\
+% genero
+%--------------------------------------------------------------\
+% Para esta regla se realiza una implementacion en la cual primero
+% se evalua como en la regla anterior la relacion entre dos personas
+% despues se evalua el genero de la Persona1 y el genero de la Persona2
+% y si cumple con lo que se busca con la indicacion de la comas que
+% sea iguales imprime el resultado
+% --------------------------------------------------------------\
+
+generoI(Persona1,Persona2):- amigo(Persona1,Persona2), genero(Persona1, Genero), genero(Persona2,Genero).
+
+

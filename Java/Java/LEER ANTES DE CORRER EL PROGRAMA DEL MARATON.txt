@@ -1,0 +1,3 @@
+Cuando usted ingrese los  datos para organizarlo de la forma que desea de le click a los nombres de las columnas:
+Nombre, Edad, Puesto
+Dependiendo de como quiere que se ordene los datos

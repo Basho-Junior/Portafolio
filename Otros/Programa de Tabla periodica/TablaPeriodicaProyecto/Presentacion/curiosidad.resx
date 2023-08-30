@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="label1.Text" xml:space="preserve">
+    <value>La tabla actual fue creada por Alfred Werner, en 1905, inspirada en lo que anteriormente había hecho Mosely, 
+esta se ha ido modificado a través de los años, se han agregado elementos, algunos de ellos han conservado 
+su nombre otros han sido cambiados por la IUPAC, y a otros se les han agregado propiedades que al principio 
+no estaban definidas.
+La Unión Internacional de Química Pura y Aplicada aprobó oficialmente el 31 de mayo de 2012 los nombres de los
+ elementos 114 y 116, Flerovio (Fl) y Livermorio (Lv) respectivamente.
+
+·El 28 de noviembre del 2016 se hicieron públicos los nombres y símbolos de cuatro elementos químicos 
+superpesados, Nihonio (113 Nh), Moscovio (115 Mc), Teneso (117 Ts) y Oganesón (118 Og).  113, 115, 117
+ y 118) que han sido descubiertos por científicos de Japón, Rusia y Estados Unidos. 
+Nihonio (113 Nh): En la tabla periódica, es un elemento transactínido del bloque p, y es miembro del séptimo 
+período dentro del grupo del boro, aunque no se realizó ningún experimento químico que haya confirmado
+ que este se comporte como el homólogo más pesado que el talio dentro de este grupo. Se cree que el nihonio
+ tenga algunas propiedades similares a la de sus homólogos más livianos, es decir, boro, aluminio, galio, indio y
+ talio, aunque también debería mostrar varias diferencias con estos. A diferencia de otros elementos del bloque p
+, se prevé que muestre algunas características de metales de transición.
+Por su vida media tan reducida de tan solo milisegundos a minutos y su inestabilidad son nulas las aplicaciones i
+ndustriales o comerciales de este elemento súper pesado, por lo que su aplicación se relega solo a la investigación científica. 
+
+Moscovio (115 Mc): es un elemento sintético de la tabla periódica cuyo símbolo es Mc y su número atómico es 115.
+Actualmente se conocen cuatro isótopos desde 287Mc hasta 290Mc. Se prevé que el isótopo más estable del moscovio 
+sea el 299Mc, que contiene el número mágico de 184 neutrones. El isótopo con mayor número de neutrones conocido 
+hasta la fecha es el 290Mc, con 175 neutrones. Es muy inestable, con una vida media de milésimas de segundo. Su nombre
+ hace referencia a la provincia de Moscú, región a la que pertenece la ciudad rusa donde se descubrió, Dubná. 
+</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>
+Teneso (117 Ts): anteriormente llamado ununseptium  es un elemento sintético muy pesado de la tabla periódica 
+de los elementos cuyo símbolo es Ts y número atómico 117. También conocido como eka-astato o simplemente 
+elemento 117, es el segundo elemento más pesado creado hasta ahora y el penúltimo del séptimo período en la tabla periódica. 
+En la tabla periódica, el teneso está ubicado en el grupo 17,nota 2 cuyos miembros de número atómico menor son halógenos.
+ Sin embargo, es probable que el teneso tenga propiedades significativamente diferentes de las del resto de elementos del grupo,
+ aunque se prevé que el punto de fusión, el punto de ebullición y la primera energía de ionización sigan las tendencias periódicas.
+ Los isótopos sintetizados hasta ahora son el teneso-293, con una vida media de aproximadamente 14 milisegundos, y teneso-294
+, con una vida media de alrededor de 78 milisegundos. 
+
+Oganesón (118 Og):  anteriormente llamado ununoctio,  es el nombre para el elemento sintético de la tabla periódica cuyo símbolo
+ es Og y su número atómico es 118.9 Es el elemento más pesado creado hasta ahora y el último del séptimo período en la tabla periódica.
+ En la tabla periódica es un elemento del bloque p y el último del periodo 7. El oganesón es actualmente el único elemento sintético del grupo
+ 18 y posee el número y masa atómica más altos de todos los elementos sintetizados.
+El oganesón es el elemento químico más pesado observado en laboratorio y su síntesis, junto a la del livermorio, no estuvo exenta de polémica.
+
+El elemento de número atómico 111 tenía por nombre Plutirio y símbolo Pl, pero este no era oficial, pero en noviembre de 2004 recibio el nombre 
+de Roentgenio y símbolo Rg en honor a Wilhelm Conrad Roentgen. 
+Roentgenio: 
+Es un mental sólido a temperatura ambiente y actualmente se conoce 7 isótopos de roentgenio, siendo de 281-Rg, con una vida media de 26 segundos
+, es más estable de todos. Además se desintegra a través de un proceso de fisión espontánea.
+
+Número atómico: 111
+Masa atómica: 281 u
+Símbolo atómico: Rn 
+Punto de fusión: Desconocido
+Punto de ebullición: Desconocido
+
+</value>
+  </data>
+</root>

@@ -1,0 +1,28 @@
+html>
+<head><title>Ejemplo de tabla sencilla</title> 
+</head>
+<body>
+<table border>
+            <tr>
+            <td><strong>Nombre del anime</strong></td>
+            <td><strong>Genero</strong></td>
+            <td><strong>Temporadas</strong></td>
+            </tr>
+            <tr>
+            <td>Danganronpa</td>
+            <td>Psicologico</td>
+            <td>3</td>
+            </tr>
+            <tr>
+            <td>Fukumenkei Noise</td>
+            <td>Shojo</td>
+            <td>1</td>
+            </tr>
+            <tr>
+            <td>Shingeki no Kyojin</td>
+            <td>Fantasia Oscura</td>
+            <td>2</td>
+            </tr>
+</table>
+</body>
+</html>

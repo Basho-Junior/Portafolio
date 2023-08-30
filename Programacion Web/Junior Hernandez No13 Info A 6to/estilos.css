@@ -1,0 +1,147 @@
+#titulo{
+    font-size:45px;
+}
+body{
+    background-color:rgb(255, 255, 255); 
+}
+#imagen1{
+    padding: 5px;
+    float:left ;
+    margin-right: 10px;
+    margin-left: 110px;       
+}
+#menu{
+    
+    margin-right: 20px;
+}
+#encabezado{
+    background-color:rgb(70, 121, 216); 
+    color:rgb(255, 255, 255); 
+}
+ul, ol {
+    list-style:none;
+   
+}
+
+.nav > li {
+    float:left;
+}
+
+.nav li a {
+    background-color:rgb(228, 149, 59); 
+    color:#fff;
+    text-decoration:none;
+    padding:10px 62px;
+    display:block;
+    
+}
+
+.nav li a:hover {
+    background-color:rgb(70, 121, 216); 
+}
+
+.nav li ul {
+    display:none;
+    position:absolute;
+    min-width:140px;
+    
+}
+
+.nav li:hover > ul {
+    display:block;
+    
+}
+
+.nav li ul li {
+    position:relative;
+    
+}
+
+.nav li ul li ul {
+    right:-140px;
+    top:0px;
+    
+}
+#creditos{
+    background-color:rgb(17, 9, 0); 
+    color:rgb(255, 255, 255); 
+    padding:50px 10px;
+}
+#informacion{
+    background-color:rgb(219, 137, 43); 
+    color:rgb(255, 255, 255); 
+    padding:40px 10px;
+    font-size:25px;
+}
+
+#Imageni{
+    margin-left:950px;
+    border: 5px solid rgb(204, 127, 40);
+    padding: 1px;
+    float:right;
+    margin-left: 10px;
+}
+#Prueba{
+    float:right ;
+    margin-right: 335px;
+}
+#Prueba1{
+    float:left;
+    margin-left:501px;
+}
+#video1{
+    margin-left:15px;
+}
+.Imagenii:hover{
+    color: #424242; 
+  -webkit-transition: all .3s ease-in;
+  -moz-transition: all .3s ease-in;
+  -ms-transition: all .3s ease-in;
+  -o-transition: all .3s ease-in;
+  transition: all .3s ease-in;
+  opacity: 1;
+  transform: scale(1.15);
+  -ms-transform: scale(1.15); /* IE 9 */
+  -webkit-transform: scale(1.15); /* Safari and Chrome */
+
+}
+#text{
+    overflow: hidden; 
+}
+.slider {
+	width: 95%;
+	margin: auto;
+    overflow: hidden;
+    
+}
+
+.slider ul {
+	display: flex;
+	padding: 0;
+	width: 4000px;
+	
+	animation: cambio 20s infinite alternate linear;
+}
+
+.slider li {
+	width: 1247.5px;
+	list-style: none;
+}
+
+.slider img {
+	width: 1500px;
+}
+
+@keyframes cambio {
+	0% {margin-left: 0;}
+	20% {margin-left: 0;}
+	
+	40% {margin-left: -100%;}
+	50% {margin-left: -100%;}
+	
+	70% {margin-left: -200%;}
+	80% {margin-left: -200%;}
+	
+	
+}
+

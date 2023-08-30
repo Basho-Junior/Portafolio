@@ -1,0 +1,6 @@
+%Dado el siguiente programa en Prolog, y habiendo probado los ejemplos
+% que se le proponen, modifíquelo para que funcione correctamente, si
+% usted cree que no lo hace.
+
+min(N1, N2, N1) :- number(N1) =< number(N2),!.
+min(N1, N2, N2).

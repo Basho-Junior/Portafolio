@@ -1,0 +1,2 @@
+Las imagenes de corrida estan dentro de las respectivas carpetas de corrida
+de sus respectivos mergesort

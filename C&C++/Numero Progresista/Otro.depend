@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1569238453 source:c:\users\junior\desktop\proyectosc\otro\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.c>
+
+1568999423 source:c:\users\junior\desktop\proyectosc\mon.c
+	<stdio.h>
+	<stdlib.h>
+

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/sticky-footer-navbar.css">
+    <script src="/js/jquery-3.6.0.min.js"></script>
+    <script src="/js/bootstrap.min.js.map"></script>
+    <title>Inicio</title>
+</head>
+
+<body>
+    <header>
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <a class="navbar-brand" href="#" th:text="${titulo}">Práctica 1.1</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li th:if="${admin}" class="nav-item">
+                        <a class="nav-link" href="/admin">Administrador</a>
+                    </li>
+                    <li th:if="${autenticado}" class="nav-item">
+                        <a class="nav-link" href="/proyecto/">Proyectos</a>
+                    </li>
+                    <li th:if="${autenticado}" class="nav-item">
+                        <a class="nav-link" href="/endpoint">Configurar Endpoint</a>
+                    </li>
+                    <li th:unless="${autenticado}" class="nav-item">
+                        <a class="nav-link" href="/login">Iniciar Sesión</a>
+                    </li>
+                    <li th:if="${autenticado}" class="nav-item">
+                        <a class="nav-link" href="/perform_logout">Cerrar Sesión</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+    </header>
+    <!-- Contenido principal -->
+    <main role="main" class="container">
+        <div class="container-fluid">
+            <hr>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header card-header-primary">
+                            <h4 class="card-title">Clone de Mocky</h4>
+                        </div>
+                        <div class="card-body">
+                            <!--Crear usuario-->
+                            <div class="container">
+                                <p>API Rest basado en <a href="https://designer.mocky.io/">Mocky</a> y <a href="https://www.mockable.io/">Mockable</a>. </p>
+                                <p><a href="login.html">Inicio</a></p>
+                            </div>
+                            <br>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="container text-center ">
+            <script>
+                document.write(new Date().getFullYear())
+            </script>,
+            <a class="text-reset fw-bold " href="https://github.com/Audric1Rosario/ProgramacionWebAvanzada">Audric y Zhen</a>
+        </div>
+    </footer>
+</body>
+
+</html>

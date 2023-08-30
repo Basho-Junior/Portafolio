@@ -1,0 +1,21 @@
+hombre(juan).
+hombre(carlos).
+mujer(maria).
+mujer(laura).
+padre(juan,maria).
+padre(juan,carlos).
+madre(laura,maria).
+madre(laura,carlos).
+esposo(juan,laura).
+esposo(laura,juan).
+
+hombre_soltero(Persona):- hombre(Persona),not(esposo(Persona,_)),!.
+hombre_soltero(Persona):-fail.
+
+persona_sin_hijos(Persona):- hombre(Persona),not(padre(Persona,_)).
+persona_sin_hijos(Persona):- mujer(Persona),not(madre(Persona,_)).
+persona_sin_hijos(_):-!.
+
+
+
+

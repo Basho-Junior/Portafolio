@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="label2.Text" xml:space="preserve">
+    <value>es un elemento químico de número atómico 16 y símbolo S 
+Es un no metal abundante con un color amarillo característico.
+Este no metal tiene un color amarillento fuerte, amarronado o 
+anaranjado y arde con llama de color azul, desprendiendo dióxido de azufre. 
+Es insoluble en agua pero se disuelve en disulfuro de carbono y benceno. 
+Es multivalente, y son comunes los estados de oxidación -2, +2, +4, +6.</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+</value>
+  </data>
+</root>

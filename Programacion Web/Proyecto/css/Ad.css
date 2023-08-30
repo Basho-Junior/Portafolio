@@ -1,0 +1,48 @@
+.head-ad{
+    background-color: rgb(32, 32, 32);
+}
+.col-3{
+    background-color: rgb(32, 32, 32);
+    padding-bottom: 500px;
+}
+.tabla{
+    font-family: sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    margin-left: -8px;
+}
+#sub{
+  color: #fff;
+}
+.float-right{
+    margin-right: 10px;
+}
+.tabla td, .tabla th{
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+.tabla tr {background-color: #f2f2f2;}
+
+.tabla tr:hover {background-color: #ddd;}
+
+.tabla th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #d14242;
+    color: white;
+}
+span{
+    font-weight: bold;
+    color: white;
+}
+#imagen1{
+    margin-left:10px;
+}
+#Letras1{
+    color: white; 
+}
+
+.out{
+    float:right;
+}

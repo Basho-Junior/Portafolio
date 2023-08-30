@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1637358340 source:c:\users\junior\desktop\proyectosc\matrices\main.cpp
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<math.h>
+	<mpi.h>
+

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/sticky-footer-navbar.css">
+    <script src="/js/bootstrap.min.js.map"></script>
+    <script src="/js/jquery-3.6.0.min.js"></script>
+    <title>Endpoints</title>
+</head>
+
+<body>
+    <header>
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <a class="navbar-brand" href="#" th:text="${titulo}">Práctica 1.1</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/proyecto/">Proyectos</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Lista de Endpoints<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/perform_logout">Cerrar Sesión</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+    </header>
+    <!-- Begin page content -->
+    <main role="main" class="container">
+        <div class="container-fluid">
+            <hr>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header card-header-primary">
+                            <h4 class="card-title">Endpoints</h4>
+                            <!-- <p class="card-category"></p> -->
+                        </div>
+                        <div class="card-body">
+                            <div class="content">
+                                <!--Acortadores registrados-->
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead class=" text-primary">
+                                            <th class="col-md-2">
+                                                Nombre
+                                            </th>
+                                            <!--Si no es admin-->
+                                            <th class="col-md-2">
+                                                Método
+                                            </th>
+                                            <th class="col-md-2">
+                                                Ruta
+                                            </th>
+                                            <th class="col-md-2">
+                                                Expiración
+                                            </th>
+                                            <th class="col-md-4">
+                                                Acciones
+                                            </th>
+                                        </thead>
+                                        <tbody>
+                                            <th:block th:each="endpoint:${proyecto.endpoints}">
+                                                <tr th:unless="${endpoint.isExpired()}">
+                                                    <td>[[${endpoint.name}]]</td>
+                                                    <td>[[${endpoint.method}]]</td>
+                                                    <td>[[${endpoint.rootPath}]]</td>
+                                                    <td>[[${#temporals.format(endpoint.expiration.toInstant(),'dd/MM/yyyy HH:mm:ss')}]] ([[${endpoint.RemainingTimeAsString}]])</td>
+                                                    <td>
+                                                        <a th:href="'/proyecto/p/'+${proyecto.id}+'/delete/'+${endpoint.method}+${endpoint.path}">
+                                                            <button class="btn btn-danger">Delete</button>
+                                                        </a>
+                                                        <button class="btn btn-secondary" th:attr="onclick=|copyClipboard(${'&quot;'+endpoint.jwtToken + '&quot;'})|">Token</button>
+
+                                                    </td>
+                                                </tr>
+                                            </th:block>
+                                        </tbody>
+                                    </table>
+                                    <a th:href="'/proyecto/p/'+${proyecto.id}+'/add'">
+                                        <button class="btn btn-primary">Agregar <span style="font-size:16px; font-weight:bold;">+ </span></button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="container text-center ">
+            <script>
+                document.write(new Date().getFullYear())
+            </script>,
+            <a class="text-reset fw-bold " href="https://github.com/Audric1Rosario/ProgramacionWebAvanzada">Audric y Zhen</a>
+        </div>
+    </footer>
+</body>
+
+<script>
+    function copyClipboard(id) {
+        navigator.clipboard.writeText(id);
+        if (id != "") {
+            alert(id + " - Copiado en el clipboard");
+        } else {
+            alert("Este endpoint no tiene JWT");
+        }
+
+    }
+</script>
+
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/sticky-footer-navbar.css">
+    <script src="/js/bootstrap.min.js.map"></script>
+    <script src="/js/jquery-3.6.0.min.js"></script>
+    <title>Inicio</title>
+</head>
+
+<body>
+<header>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="#">Práctica 1</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
+                </li>
+                <!--
+                <li class="nav-item">
+                    <a class="nav-link" href="https://getbootstrap.com/docs/4.1/examples/sticky-footer-navbar/#">Link</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="https://getbootstrap.com/docs/4.1/examples/sticky-footer-navbar/#">Disabled</a>
+                </li>-->
+            </ul>
+            <!--
+            <form class="form-inline mt-2 mt-md-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>-->
+        </div>
+    </nav>
+
+</header>
+<!-- Begin page content -->
+<main role="main" class="container">
+    <div class="container-fluid">
+        <hr>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title">Administración de estudiantes</h4>
+                        <!-- <p class="card-category"></p> -->
+                    </div>
+                    <div class="card-body">
+                        <!--Crear usuario-->
+                        <div th:unless="${modificar}" class="container">
+                            <!-- Comprobar clave en caso de que se suba normalmente-->
+                            <h3 style="text-align: center;">Crear estudiante</h3>
+                            <hr>
+                            <form action="/crearestudiante" method="POST">
+                                <div class="row">
+                                    <!-- <div class="col-md-none">
+                                        <div class="form-group">
+                                            <input id="idusuario" name="idusuario" type="hidden" class="form-control" required>
+                                        </div>
+                                    </div> -->
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="bmd-label-floating">Matricula</label>
+                                            <input id="matricula" name="matricula" type="number" class="form-control" minlength="3" maxlength="16" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="bmd-label-floating">Nombre</label>
+                                            <input id="nombre" name="nombre" type="text" class="form-control" minlength="3" maxlength="16" pattern="^[a-zA-Z]*" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="bmd-label-floating">Teléfono</label>
+                                            <!-- Cambiar cuando estes trabajando con esto... -->
+                                            <!-- <input id="rol" name="rol" type="text" class="form-control" readonly> -->
+                                            <input id="telefono" name="telefono" type="tel" class="form-control" minlength="3" maxlength="16" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <input id="submit" name="submit" type="submit" value="Crear estudiante" class="btn btn-secondary float-right">
+                                <div class="clearfix"></div>
+                            </form>
+                        </div>
+                        <div th:if="${modificar}" class="container">
+                            <!-- Comprobar clave en caso de que se suba normalmente-->
+                            <h3 style="text-align: center;">Modificar estudiante</h3>
+                            <hr>
+                            <form action="/modificarestudiante" method="POST">
+                                <div class="row">
+                                    <!-- <div class="col-md-none">
+                                        <div class="form-group">
+                                            <input id="idusuario" name="idusuario" type="hidden" class="form-control" required>
+                                        </div>
+                                    </div> -->
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="bmd-label-floating">Matricula</label>
+                                            <input id="matricula" name="matricula" th:value="${modificar.matricula}" type="number" class="form-control" minlength="3" maxlength="16" readonly required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="bmd-label-floating">Nombre</label>
+                                            <input id="nombre" name="nombre" th:value="${modificar.nombre}" type="text" class="form-control" minlength="3" maxlength="16" pattern="^[a-zA-Z]*" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="bmd-label-floating">Teléfono</label>
+                                            <!-- Cambiar cuando estes trabajando con esto... -->
+                                            <!-- <input id="rol" name="rol" type="text" class="form-control" readonly> -->
+                                            <input id="telefono" name="telefono" th:value="${modificar.telefono}" type="tel" class="form-control" minlength="3" maxlength="16" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <input id="submit" name="submit" type="submit" value="Modificar estudiante" class="btn btn-secondary float-right">
+                                <div class="clearfix"></div>
+                            </form>
+                        </div>
+                        <br>
+                        <hr>
+                        <!--Tabla de todos los usuarios-->
+                        <div class="content" th:if="${misEstudiantes}">
+                            <!--Acortadores registrados-->
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead class=" text-primary">
+                                    <th class="col-md-2">
+                                        Matrícula
+                                    </th>
+                                    <!--Si no es admin-->
+                                    <th class="col-md-3">
+                                        Nombre
+                                    </th>
+                                    <th class="col-md-3">
+                                        Teléfono
+                                    </th>
+                                    <th class="col-md-4">
+                                        Acción
+                                    </th>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="estudiante : ${misEstudiantes}">
+                                        <form action="/eliminarestudiante" method="POST">
+                                            <td th:text="${estudiante.matricula}">
+                                                0
+                                            </td>
+                                            <td th:text="${estudiante.nombre}">
+                                                Username
+                                            </td>
+                                            <td th:text="${estudiante.telefono}">
+                                                809-000-0000
+                                            </td>
+                                            <td>
+                                                <!--Colocar ID de acortador-->
+                                                <input th:value="${estudiante.matricula}" id="matricula" name="matricula" type="hidden" class="form-control" readonly required>
+                                                <input type="submit" formaction="/modificar" value="Modificar" class="btn btn-primary">
+                                                <input type="submit" value="Eliminar" class="btn btn-danger">
+                                            </td>
+                                        </form>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<footer class="footer">
+    <div class="container text-center ">
+        <script>
+            document.write(new Date().getFullYear())
+        </script>,
+        <a class="text-reset fw-bold " href="https://github.com/Audric1Rosario/ProgramacionWebAvanzada">Audric y Zhen</a>
+    </div>
+</footer>
+</body>
+
+</html>

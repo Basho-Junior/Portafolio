@@ -1,0 +1,167 @@
+<html>
+    <head>
+        <style>
+        #po{
+            float: left;
+            margin-left:6px;
+            margin-top:-2px;
+        }
+        #o{
+            float: left;
+            margin-left:360px;
+            margin-top:-0.1px;
+        }
+        #a{
+            float:left;
+            margin-top:-20px;
+            margin-left:700px;
+        }
+        #t1{
+            padding-left: 15px;
+            padding-right:14px;
+        }
+        #t2{
+            padding-left: 19px;
+            padding-right:19px;
+        }
+        #t3{
+            padding-left: 10px;
+            padding-right:22px;
+        }
+        #t4{
+            padding-left: 10px;
+            padding-right:11px;
+        }
+        #popo{
+            float:left;
+            margin-left:-2px;
+            margin-top:-2px;
+        }
+        #promet{
+            padding-top: 50px;
+        }
+        </style>
+        <body>
+            <center>            
+                <div>
+                <table border cellpadding="0" cellspacing="0">
+                    <tr>
+                        <th>Empleados</th>
+                        <th>Primera Venta</th>
+                        <th>Segunda Venta</th>
+                        <th>Tercera Venta</th>
+                        <th>Cuarta Venta</th>
+                        <th>Promedio</th>
+                    </tr>
+                    <tr>
+                        <td>Anyely</td>
+                        <td id="v1"></td>
+                        <td id="v2"></td>
+                        <td id="v3"></td>
+                        <td id="v4"></td>
+                        <td id="v5"></td>
+                    </tr>
+                    <tr>
+                        <td>Raineris</td>
+                        <td id="v6"></td>
+                        <td id="v7"></td>
+                        <td id="v8"></td>
+                        <td id="v9"></td>
+                        <td id="v10"></td>
+                    </tr>
+                    <tr>
+                        <td>Anna</td>
+                        <td id="v11"></td>
+                        <td id="v12"></td>
+                        <td id="v13"></td>
+                        <td id="v14"></td>
+                        <td id="v15"></td>
+                    </tr>
+                    <tr>
+                        <td>Stephania</td>
+                        <td id="v16"></td>
+                        <td id="v17"></td>
+                        <td id="v18"></td>
+                        <td id="v19"></td>
+                        <td id="v20"></td>
+                    </tr>
+                   
+                    <tr>
+                        <th></th>
+                        
+                    </tr>
+                </table>
+                <h3 id = "o">Ventas Total:</h3>
+                <table id ="po" border cellpadding="0" cellspacing="0">
+                     <tr>
+                        <th id="t1"></th>
+                        <th id="t2"></th>
+                        <th id="t3"></th>
+                        <th id="t4"></th>
+                    </tr>
+                </table>
+                <table id="popo" border cellpadding="0" cellspacing="0">
+                    <tr><th id="promet"></th></tr>
+                </table>
+                <h3 id = "a">Promedio de Ventas:</h3>
+                <script>
+                    var sum1=0; 
+                    var sum2=0; 
+                    var sum3=0; 
+                    var sum4=0;
+                        var venta1=1650;
+                        var venta2=2300;
+                        var venta3=1400;
+                        var venta4=3100;
+                        var venta6=5235;
+                        var venta7=1178;
+                        var venta8=1550;
+                        var venta9=1375;
+                        var venta11=846;
+                        var venta12=2540;
+                        var venta13=1660;
+                        var venta14=3500;
+                        var venta16=3560;
+                        var venta17=1250;
+                        var venta18=1600;
+                        var venta19=2145;
+                        sum1 = venta1+venta6+venta11+venta16;
+                        sum2 = venta2+venta7+venta12+venta17;
+                        sum3 = venta3+venta8+venta13+venta18;
+                        sum4 = venta4+venta9+venta14+venta19;
+                        var prome1=(venta1+venta2+venta3+venta4)/4;
+                        var prome2=(venta6+venta7+venta8+venta9)/4;
+                        var prome3=(venta11+venta12+venta13+venta14)/4;
+                        var prome4=(venta16+venta17+venta18+venta19)/4;
+                        document.getElementById("v1").innerHTML="RD$"+venta1;
+                        document.getElementById("v2").innerHTML="RD$"+venta2;
+                        document.getElementById("v3").innerHTML="RD$"+venta3;
+                        document.getElementById("v4").innerHTML="RD$"+venta4;
+                        document.getElementById("v5").innerHTML="RD$"+prome1;
+                        document.getElementById("v6").innerHTML="RD$"+venta6;
+                        document.getElementById("v7").innerHTML="RD$"+venta7;
+                        document.getElementById("v8").innerHTML="RD$"+venta8;
+                        document.getElementById("v9").innerHTML="RD$"+venta9;
+                        document.getElementById("v10").innerHTML="RD$"+prome2;
+                        document.getElementById("v11").innerHTML="RD$"+venta11;
+                        document.getElementById("v12").innerHTML="RD$"+venta12;
+                        document.getElementById("v13").innerHTML="RD$"+venta13;
+                        document.getElementById("v14").innerHTML="RD$"+venta14;
+                        document.getElementById("v15").innerHTML="RD$"+prome3;
+                        document.getElementById("v16").innerHTML="RD$"+venta16;
+                        document.getElementById("v17").innerHTML="RD$"+venta17;
+                        document.getElementById("v18").innerHTML="RD$"+venta18;
+                        document.getElementById("v19").innerHTML="RD$"+venta19;
+                        document.getElementById("v20").innerHTML="RD$"+prome4;
+                        document.getElementById("t1").innerHTML="RD$"+sum1;
+                        document.getElementById("t2").innerHTML="RD$"+sum2;
+                        document.getElementById("t3").innerHTML="RD$"+sum3;
+                        document.getElementById("t4").innerHTML="RD$"+sum4;
+                        var promet1=(prome1+prome2+prome3+prome4);
+                        document.getElementById("promet").innerHTML="RD$"+promet1;
+                </script>
+            </div>
+        </center>
+        </body>
+    </head>
+</html>

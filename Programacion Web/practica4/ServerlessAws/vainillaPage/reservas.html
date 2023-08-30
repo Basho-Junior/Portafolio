@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Práctica 4</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="fonts/ionicons.min.css">
+    <link rel="stylesheet" href="css/styles.min.css">
+    <!--Extra-->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <!--Special-->
+    <script src="js/jquery.easing.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-lg navigation-clean">
+        <div class="container"><a class="navbar-brand" href="index.html"><img src="img/PUCMM.png" style="height: 20%;   width: 20%;"></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="laboratorio.html">Laboratorios</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#">Reservar</a></li>
+                    <li class="nav-item"><a class="nav-link" href="pasados.html">Registros</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="card">
+        <div class="card-body">
+            <h4 class="text-center card-title">Crear Reservación</h4>
+            <form onsubmit="return crearReservacion()">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4 col-lg-2"></div>
+                        <div class="col-md-4 col-lg-8">
+                            <label class="form-label">ID Estudiantil</label>
+                            <input class="form-control" type="text" minlength="8" maxlength="8" id="idestudiante" pattern="[0-9]+" name="idestudiante" required>
+                            <label class="form-label">Nombre</label>
+                            <input class="form-control" type="text" id="nombre" name="nombre" required>
+                            <label class="form-label">Carrera</label>
+                            <input class="form-control" type="text" id="carrera" name="carrera" required>
+                            <label class="form-label">Laboratorio</label>
+                            <select class="form-select" id="lab" name="lab" required>
+                                <option value="EICT" text="EICT" selected>EICT</option>
+                            </select>
+                            <label class="form-label">Fecha</label>
+                            <input class="form-control" id="fecha" type="date" name="fecha" required>
+                            <label class="form-label">Hora</label>
+                            <select class="form-select" id="hora" name="hora" required>
+                                <option value="8" selected>8:00 AM</option>
+                                <option value="9">9:00 AM</option>
+                                <option value="10">10:00 AM</option>
+                                <option value="11">11:00 AM</option>
+                                <option value="12">12:00 PM</option>
+                                <option value="13">1:00 PM</option>
+                                <option value="14">2:00 PM</option>
+                                <option value="15">3:00 PM</option>
+                                <option value="16">4:00 PM</option>
+                                <option value="17">5:00 PM</option>
+                                <option value="18">6:00 PM</option>
+                                <option value="19">7:00 PM</option>
+                                <option value="20">8:00 PM</option>
+                                <option value="21">9:00 PM</option>
+                            </select>
+                            <hr>
+                            <input type="submit" value="Reservar" class="btn btn-secondary">
+                        </div>
+                        <div class="col-md-4 col-lg-2" type="submit"></div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <footer class="footer-basic">
+        <div class="social"><a href="https://github.com/Audric1Rosario/ProgramacionWebAvanzada"><i class="icon ion-social-github"></i></a></div>
+        <p class="copyright">Zheng y Audric © 2021</p>
+    </footer>
+    <script src="js/bootstrap.min.js"></script>
+</body>
+
+<script>
+    $(document).ready(function() {
+        console.log("ready!");
+        setTimeout(cargarSelect, 250);
+        setTimeout(buscarReservas, 300);
+    });
+
+    var selectLaboratorio = null;
+    var misLaboratorios = null;
+    var misReservas = null;
+
+    function cargarSelect() {
+        selectLaboratorio = $('#lab');
+        var settings = {
+            'cache': false,
+            "url": _config.api.invokeUrlb,
+            "method": "GET"
+        };
+        $.ajax(settings).done(function(response) {
+            console.log(response);
+            var arreglo = response.data.laboratorios;
+            misLaboratorios = Array.from(arreglo);
+            if (arreglo.length > 0) {
+                for (var i = 0; i < arreglo.length; i++) {
+                    selectLaboratorio.append(`<option value="${arreglo[i].nombre}" text="${arreglo[i].nombre}">
+                            ${arreglo[i].nombre}</option>`);
+                }
+            }
+        }).fail(function ajaxError(jqXHR, textStatus, errorThrown) {
+            manejoErrores(jqXHR, textStatus, errorThrown) });
+    }
+
+    function buscarReservas() {
+        var settings = {
+            'cache': false,
+            "url": _config.api.invokeUrl,
+            "method": "GET"
+        };
+        $.ajax(settings).done(function(response) {
+            console.log(response);
+            misReservas = Array.from(response.data.reservas);
+        }).fail(function ajaxError(jqXHR, textStatus, errorThrown) {
+            manejoErrores(jqXHR, textStatus, errorThrown)
+        });
+    }
+
+    function crearReservacion() {
+        // Verificar que tienen datos
+        if (camposVacios()) {
+            alert("Recuerda llenar todos los campos");
+            return false;
+        }
+        setTimeout(asyncReservacion, 100);
+        return false;
+    }
+
+    function asyncReservacion() {
+        var tidEstudiante = $("#idestudiante");
+        var tnombre = $("#nombre");
+        var tcarrera = $("#carrera");
+        var tlaboratorio = $("#lab");
+        var tfecha = $("#fecha");
+        var thora = $("#hora");
+        var mostrar = tfecha.val() + ' ' + thora.val() + ':00'
+
+        console.log("Creando reserva para " + tidEstudiante.val());
+        // Revisar si se puede crear una reserva para ese laboratorio.
+        if (esPosible(tlaboratorio.val(), mostrar)) {
+            $.ajax({
+                method: 'POST',
+                contentType: 'application/json',
+                url: _config.api.invokeUrl,
+                data: JSON.stringify({
+                    idEstudiante: tidEstudiante.val(),
+                    nombre: tnombre.val(),
+                    carrera: tcarrera.val(),
+                    laboratorio: tlaboratorio.val(),
+                    fecha: mostrar
+                }),
+                success: function (resultado) {
+                    console.log(JSON.stringify(resultado));
+                },
+                error: function ajaxError(jqXHR, textStatus, errorThrown) {
+                    manejoErrores(jqXHR, textStatus, errorThrown);
+                }
+            });
+        }
+        // Limpiar.
+        tidEstudiante.val("");
+        tnombre.val("");
+        tcarrera.val("");
+    }
+
+    function camposVacios() {
+        var tidEstudiante = $("#idestudiante");
+        var tnombre = $("#nombre");
+        var tcarrera = $("#carrera");
+        var tlaboratorio = $("#lab");
+        var tfecha = $("#fecha");
+        var thora = $("#hora");
+
+        if (tidEstudiante.val() == '' || tnombre.val() == '' || tcarrera.val() == '' ||
+        tlaboratorio.val() == '' || tfecha.val() == '' || thora == '') {
+            return true;
+        }
+        return false;
+    }
+
+    function esPosible(nombreLab, fechaTiempo) {
+        // Primero que nada que la fecha no sea menor a la actual.
+        if (Date.parse(fechaTiempo) < Date.now()) {
+            return false;
+        }
+
+        // Si no existen laboratorios en la db.
+        if (misReservas == null || misLaboratorios == null) {
+            return true;
+        }
+        // Si no tengo reservas.
+        if (misReservas == 0) {
+            return true;
+        }
+
+        var conteo = 0;
+        for (var i = 0; i < misReservas.length; i++) {
+            // Si son el laboratorio
+            if (misReservas[i].laboratorio == nombreLab) {
+                // Si esta en fecha y los que sean a la misma hora
+                if (Date.parse(misReservas[i].fecha) == Date.parse(fechaTiempo)) {
+                    conteo++;
+                }
+            }
+        }
+        var cantMax = null;
+        if (misLaboratorios.length > 0) {
+            // Buscar la cantidad máxima del laboratorio encuestión.
+            for (var i = 0; i < misLaboratorios.length; i++) {
+                if (misLaboratorios[i].nombre == nombreLab) {
+                    cantMax = misLaboratorios[i].cantidadMaxima;
+                }
+            }
+        }
+        if (cantMax == null) {
+            cantMax = 8;
+        }
+        if (conteo < cantMax) {
+            return true;
+        }
+
+        return false;
+    }
+
+    function manejoErrores(jqXHR, textStatus, errorThrown) {
+        console.error('Error procesando la consulta: ', textStatus, ', Detalle: ', errorThrown);
+        console.error('Respuesta: ', jqXHR.responseText);
+        alert('Ocurrio un error en la consulta:\n' + jqXHR.responseText);
+    }
+</script>
+</html>

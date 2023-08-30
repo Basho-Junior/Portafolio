@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nameAux"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark">
+
+
+    <ImageView
+        android:id="@+id/profile"
+        android:layout_width="194dp"
+        android:layout_height="168dp"
+        android:layout_marginStart="124dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="93dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/user" />
+
+    <TextView
+        android:id="@+id/txtnameaux"
+        android:layout_width="189dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="77dp"
+        android:layout_marginTop="66dp"
+        android:layout_marginEnd="145dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile" />
+
+    <TextView
+        android:id="@+id/txtmailAux"
+        android:layout_width="193dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="75dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="143dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtnameaux" />
+
+    <TextView
+        android:id="@+id/txtPassAux"
+        android:layout_width="181dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="83dp"
+        android:layout_marginTop="38dp"
+        android:layout_marginEnd="147dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtmailAux" />
+
+    <TextView
+        android:id="@+id/txtUsernameAux"
+        android:layout_width="187dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="83dp"
+        android:layout_marginTop="38dp"
+        android:layout_marginEnd="141dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtPassAux" />
+</androidx.constraintlayout.widget.ConstraintLayout>

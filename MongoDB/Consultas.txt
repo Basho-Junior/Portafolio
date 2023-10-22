@@ -1,0 +1,25 @@
+1. Listar tercera y cuarta orden realizada al suplidor "ALMACENES SANTIAGO"  en los últimos 6 meses. Datos a mostrar:
+
+numeroOrden, fechaOrden, nombreSuplidor y totalFactura
+
+Nota: Esta consulta debe ser realizada utilizando find().
+
+db.OrdenCompra.find({nombreSuplidor:"ALMACENES SANTIAGO", fechaOrden:{$gte:ISODate("2021-11-31"), $lte:ISODate("2022-05-31")}},{_id:0, numeroOrden:1, fechaOrden:1,nombreSuplidor:1,totalFactura:1}).sort({fechaOrden:1}).skip(2).limit(2)
+
+2. Listar por cada artículo la cantidad de distintos suplidores a los cuales ha sido ordenado y que hayan sido despachados a las ciudades de "SANTIAGO"  o "LA VEGA".
+
+Datos a mostrar:
+
+CodigoProducto NombreProducto  CantidadSuplidores MontoTotal
+
+db.OrdenCompra.aggregate([{ $match: { $or: [{ ciudadDespacho: "SANTIAGO" }, { ciudadDespacho: "LA VEGA" }] } }, { $lookup: { from: "DetalleOrden", localField: "numeroOrden", foreignField: "numeroOrden", as: "Detalles" } }, { $unwind: "$Detalles" }, { $group: { _id: { codigoArticulo: "$Detalles.codigoProducto", nombre: "$Detalles.descripcion", suplidor: "$codigoSuplidor" }, montoTotalComprado: { $sum: { $subtract: [{ $multiply: ["$Detalles.precio", "$Detalles.cantidad"] }, { $multiply: ["$Detalles.precio", "$Detalles.cantidad", { $divide: ["$Detalles.porcientoDescuento", 100] }] }] } } } }, { $group: { _id: { codigoArticulo: "$_id.codigoArticulo", nombre: "$_id.nombre" }, total: { $sum: 1 }, suplidor: { $first: "$_id.suplidor" }, monto: { $sum: "$montoTotalComprado" } } }, { $project: { _id: 0, CodigoProducto: "$_id.codigoArticulo", NombreProducto: "$_id.nombre", CantidadSuplidores: "$total", MontoTotal: "$monto" } }])
+
+3. Listar los 5 artículos que menos cantidad se ha comprado durante el mes de diciembre del 2021. Datos a Mostrar:
+
+    CodigoProducto      NombreProducto          Cantidad
+
+db.OrdenCompra.aggregate([{$project:{numeroOrden:"$numeroOrden",ano:{$year:"$fechaOrden"},mes:{$month:"$fechaOrden"}}},{$match: {ano:2021, mes:12}},{$lookup:{from:"DetalleOrden",localField:"numeroOrden",foreignField:"numeroOrden",as:"Detalles"}},{$unwind:"$Detalles"},{$group:{_id:{codigoArticulo:"$Detalles.codigoProducto",nombreArticulo:"$Detalles.descripcion"},cantidadArticulo:{$sum:"$Detalles.cantidad"}}},{$sort:{cantidadArticulo:1}},{$project:{_id:0,CodigoProducto:"$_id.codigoArticulo",NombreProducto:"$_id.nombreArticulo",Cantidad:"$cantidadArticulo"}},{$limit:5}])
+
+4. Utilizando Find, mostrar las últimas 10 órdenes realizadas entre 01/01/2020 y 15/08/2020. mostrar como dato de salida: NombreSuplidor, CiudadOrden, CiudadDespacho, MontoTotal. La información debe ser organizada por Suplidor y CiudadOrden.
+
+db.OrdenCompra.find({ fechaOrden: { $gte: ISODate("2020-01-01"), $lte: ISODate("2020-08-15") } }, { _id: 0, NombreSuplidor: "$nombreSuplidor", CiudadOrden: "$ciudadOrden", CiudadDespacho: "$ciudadDespacho", MontoTotal: "$totalFactura" }).sort({ fechaOrden: -1 }).limit(10)
